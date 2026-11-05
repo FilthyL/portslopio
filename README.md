@@ -8,9 +8,7 @@ A parody portfolio for the slop I've made. Every project gets a card with a blur
 | --- | --- | --- |
 | Filth Manor | https://filthyl.github.io/shelves/ | 7 |
 | Indian Hate Index | https://filthyl.github.io/hateindex/ | 8 |
-| KármánNet | https://github.com/FilthyL/karmannet | 7 |
 | cards- | https://github.com/FilthyL/cards- (it's just a LICENSE) | 9 |
-| portslopio | this page | 5 |
 | The next one | https://github.com/FilthyL?tab=repositories | 6 |
 
 ## The gauntlet
@@ -35,11 +33,20 @@ On trial 4 it adds an extra trial on purpose. The progress bar sometimes goes ba
 
 A **slop-o-meter** in the corner fills with goo as you scroll, hover, click and survive trials. It changes colour as you go up the levels (Slop-curious → Terminal slop). At 100% you get a SLOP OVERLOAD: it rains spaghetti, and then the meter vents back to 42%. Each card also has its own slop rating, and portslopio's is 110%.
 
+Poke the meter and it roasts you, harder each time ("You've now touched this more than you've touched grass this week"). On the 15th poke your mum texts.
+
+While you browse, things randomly drop in:
+- **Pop-up slop ads** in the corner, like "HOT SINGLE PROMPTS IN YOUR AREA", "DOWNLOAD MORE RAM" and SlopCoin™. The close button argues with you the first time.
+- **Banner ads** between sections that change every 8 seconds.
+- **Banger slop lines** and **free slop ideas** as speech bubbles. Tap one to dismiss it.
+
+The **Slop Lab** has a slop idea generator ("A CRM for people who only speak in emojis, but it's narrated by a disappointed dad") with a **Copy as prompt** button, so you can paste the idea straight into an AI. Next to it is a banger line dispenser. The hero also shows a new banger every 6 seconds.
+
 Every trial can be passed. Nothing gets stored or sent anywhere: no cookies, no analytics, no server.
 
 ## Editing
 
-It's all in `index.html`. Projects are in the `PROJECTS` array, and the questions are in `FREE_Q` and `MC_Q`. Screenshots go in `assets/shots/`. To run it locally:
+It's all in `index.html`. Projects are in the `PROJECTS` array. The questions are in `FREE_Q` and `MC_Q`, the ads are in `ADS`, the lines are in `BANGERS`, the idea parts are in `IDEA`, and the meter roasts are in `CRINGE`. Screenshots go in `assets/shots/`. To run it locally:
 
 ```bash
 python3 -m http.server 8000
