@@ -1,0 +1,1470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>portslopio</title>
+<meta name="description" content="A portfolio of artisanal, hand-prompted slop. Every link is protected by state-of-the-art human verification.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Rubik:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍝</text></svg>">
+<style>
+:root{
+  --grape:#1d0840; --grape-2:#33106a; --bg:#1d0840;
+  --ink:#170b22; --cream:#fff6e5; --white:#ffffff;
+  --pink:#ff3ea5; --yellow:#ffe14d; --cyan:#3fe0ff; --lime:#b8ff3d; --orange:#ff8a3d; --lav:#b58cff; --red:#ff4d5e;
+  --display:"Bagel Fat One", "Rubik", system-ui, sans-serif;
+  --sans:"Rubik", system-ui, sans-serif;
+  --mono:"Space Mono", ui-monospace, Menlo, monospace;
+  --bd:3px solid var(--ink);
+  --r:20px;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--grape);color:var(--cream);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+.mono{font-family:var(--mono)}
+::selection{background:var(--pink);color:var(--ink)}
+
+/* ---------- the candy background ---------- */
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(ellipse at 50% -10%,var(--grape-2),var(--grape) 65%)}
+.bg i{position:absolute;width:46vmax;height:46vmax;border-radius:50%;filter:blur(80px);opacity:.5;animation:drift 22s ease-in-out infinite alternate}
+.bg i:nth-child(1){background:var(--pink);left:-12vmax;top:-14vmax}
+.bg i:nth-child(2){background:var(--cyan);right:-16vmax;top:12vh;animation-duration:27s;animation-delay:-6s;opacity:.38}
+.bg i:nth-child(3){background:var(--lime);left:18vw;bottom:-26vmax;animation-duration:31s;opacity:.28}
+.bg i:nth-child(4){background:var(--orange);right:6vw;bottom:-18vmax;animation-duration:25s;animation-delay:-12s;opacity:.36}
+@keyframes drift{to{transform:translate(10vw,9vh) scale(1.2)}}
+.bg::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,246,229,.14) 1.3px,transparent 1.4px);background-size:22px 22px}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.18;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;border:var(--bd);background:var(--cream);color:var(--ink);padding:11px 20px;border-radius:999px;font:700 15px/1.1 var(--sans);text-decoration:none;box-shadow:4px 4px 0 var(--ink);transition:transform .12s, box-shadow .12s, background .12s}
+.btn:hover{transform:translate(-2px,-2px) rotate(-1.5deg);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn.primary{background:var(--yellow)}
+.btn.hot{background:var(--pink)}
+.btn.small{padding:7px 14px;font-size:13px;box-shadow:3px 3px 0 var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:2px 2px 0 var(--ink)}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:12px;z-index:30;margin-top:12px}
+nav .wrap{display:flex;align-items:center;gap:16px;height:60px;padding:0 10px 0 20px;background:var(--cream);color:var(--ink);border:var(--bd);border-radius:999px;box-shadow:6px 6px 0 var(--ink)}
+.logo{font:400 23px/1 var(--display);text-decoration:none;display:flex;align-items:center;gap:6px;letter-spacing:.01em}
+.logo b{font-weight:400;color:var(--pink);-webkit-text-stroke:1.5px var(--ink)}
+nav .links{margin-left:auto;display:flex;align-items:center;gap:18px;font-weight:700;font-size:15px}
+nav .links a:not(.btn){text-decoration:none}
+nav .links a:not(.btn):hover{text-decoration:underline wavy var(--pink) 2px;text-underline-offset:5px}
+@media (max-width:640px){ nav .links a:not(.btn){display:none} nav .wrap{padding-left:14px} }
+
+/* ---------- tapes ---------- */
+.tape{position:relative;height:120px;margin-top:22px;overflow:hidden}
+.marquee{position:absolute;left:-5%;width:110%;top:36px;overflow:hidden;border-block:var(--bd);color:var(--ink);font:400 21px/1 var(--display);text-transform:uppercase;letter-spacing:.03em}
+.marquee.a{background:var(--yellow);transform:rotate(-2.5deg);z-index:2;box-shadow:0 6px 0 var(--ink)}
+.marquee.b{background:var(--pink);transform:rotate(2deg)}
+.marquee .track{display:flex;width:max-content;animation:scroll 40s linear infinite;padding:12px 0}
+.marquee.b .track{animation-direction:reverse;animation-duration:50s}
+.marquee span{padding-inline:20px;white-space:nowrap}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- hero ---------- */
+.hero{padding:34px 0 64px;position:relative}
+.hero > *:not(.stickers){position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:var(--ink);border:var(--bd);border-radius:999px;padding:8px 14px;font:700 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;box-shadow:3px 3px 0 var(--ink);transform:rotate(-2deg)}
+.eyebrow .dot{width:10px;height:10px;border-radius:50%;background:var(--pink);border:2px solid var(--ink);animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.5)}}
+.hero h1{font:400 clamp(70px,13.5vw,176px)/.86 var(--display);letter-spacing:-.01em;margin:28px 0 30px;color:var(--cream);text-shadow:4px 4px 0 var(--ink),8px 8px 0 var(--pink),12px 12px 0 var(--ink)}
+.hero h1 .slop{display:inline-block;background:linear-gradient(90deg,var(--lime),var(--yellow),var(--orange),var(--pink),var(--lav),var(--cyan),var(--lime));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:4px var(--ink);paint-order:stroke fill;text-shadow:none;filter:drop-shadow(8px 8px 0 var(--ink));animation:candy 5s linear infinite, wobble 2.6s ease-in-out infinite;transform-origin:30% 70%;padding:0 .06em .16em;margin:0 -.06em -.16em}
+@keyframes candy{to{background-position:300% 0}}
+@keyframes wobble{50%{transform:rotate(-3deg) scale(1.03)}}
+.derog{display:inline-block;vertical-align:top;margin-left:10px;font:700 14px/1 var(--mono);letter-spacing:0;text-shadow:none;color:var(--ink);background:var(--yellow);border:var(--bd);border-radius:8px;padding:6px 9px;box-shadow:3px 3px 0 var(--ink);transform:rotate(9deg) translateY(10px)}
+.hero p.lede{font-size:clamp(18px,2.3vw,23px);max-width:640px;margin:0 0 32px;font-weight:500}
+.hero p.lede strong{background:var(--yellow);color:var(--ink);padding:0 .25em;-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:4px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.fineprint{font:12px/1.5 var(--mono);color:rgba(255,246,229,.65);margin-top:20px;max-width:640px}
+.stickers span{position:absolute;display:grid;place-items:center;width:78px;height:78px;font-size:40px;background:var(--cream);border:var(--bd);border-radius:50%;box-shadow:4px 4px 0 var(--ink);animation:bob 4s ease-in-out infinite}
+.stickers span:nth-child(1){right:4%;top:30px}
+.stickers span:nth-child(2){right:20%;top:120px;background:var(--yellow);animation-delay:-1s}
+.stickers span:nth-child(3){right:3%;top:230px;background:var(--cyan);animation-delay:-2s;width:92px;height:92px}
+.stickers span:nth-child(4){right:28%;top:6px;background:var(--lime);animation-delay:-3s;width:60px;height:60px;font-size:28px}
+.stickers span:nth-child(5){right:14%;top:340px;background:var(--pink);animation-delay:-1.5s}
+.stickers span:nth-child(6){right:30%;top:280px;background:var(--lav);animation-delay:-2.5s;width:64px;height:64px;font-size:30px}
+@keyframes bob{50%{transform:translateY(-16px) rotate(10deg)}}
+@media (max-width:640px){ .eyebrow{font-size:10px;letter-spacing:.02em;white-space:nowrap;padding:7px 11px} .stickers span:nth-child(2){display:none} }
+@media (max-width:900px){ .stickers span{width:54px!important;height:54px!important;font-size:26px!important} .stickers span:nth-child(n+3){display:none} .stickers span:nth-child(1){top:-6px;right:2%} .stickers span:nth-child(2){top:60px;right:16%} }
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:110px}
+.stats div{padding:20px 22px;color:var(--ink);border:var(--bd);border-radius:var(--r);box-shadow:6px 6px 0 var(--ink);transition:transform .2s}
+.stats div:nth-child(1){background:var(--pink);transform:rotate(-1.5deg)}
+.stats div:nth-child(2){background:var(--cyan);transform:rotate(1deg)}
+.stats div:nth-child(3){background:var(--yellow);transform:rotate(-1deg)}
+.stats div:nth-child(4){background:var(--lime);transform:rotate(1.5deg)}
+.stats div:hover{transform:rotate(0) scale(1.04)}
+.stats b{display:block;font:400 48px/1 var(--display);margin-bottom:6px}
+.stats span{font:700 12px/1.4 var(--mono)}
+@media (max-width:760px){ .stats{grid-template-columns:1fr 1fr} }
+
+/* ---------- sections ---------- */
+section{margin-bottom:120px}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.sec-head h2{font:400 clamp(48px,7.5vw,88px)/.95 var(--display);margin:0;text-shadow:4px 4px 0 var(--ink),8px 8px 0 var(--cyan)}
+#stack .sec-head h2{text-shadow:4px 4px 0 var(--ink),8px 8px 0 var(--lime)}
+#praise .sec-head h2{text-shadow:4px 4px 0 var(--ink),8px 8px 0 var(--orange)}
+.sec-head p{margin:0;max-width:420px;font-size:15px;font-weight:500;opacity:.9}
+.num{display:inline-block;background:var(--cream);color:var(--ink);border:var(--bd);padding:6px 10px;border-radius:8px;font:700 12px/1 var(--mono);letter-spacing:.08em;transform:rotate(-3deg);box-shadow:3px 3px 0 var(--ink);margin-bottom:16px}
+
+/* ---------- project cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:28px}
+.card{--c:var(--pink);grid-column:span 3;background:var(--c);color:var(--ink);border:var(--bd);border-radius:var(--r);box-shadow:8px 8px 0 var(--ink);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s cubic-bezier(.3,1.6,.5,1), box-shadow .25s}
+.card:nth-child(odd){transform:rotate(-.7deg)}
+.card:nth-child(even){transform:rotate(.7deg)}
+.card:hover{transform:translate(-4px,-4px) rotate(0);box-shadow:13px 13px 0 var(--ink)}
+.card.wide{grid-column:span 6}
+.card.third{grid-column:span 2}
+@media (max-width:900px){ .card,.card.third{grid-column:span 6} }
+.shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--ink);border-bottom:var(--bd)}
+.card.wide .shot{aspect-ratio:21/8}
+@media (max-width:900px){ .card.wide .shot{aspect-ratio:16/10} }
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;filter:blur(9px) saturate(1.5);transform:scale(1.1);transition:filter .8s, transform .8s}
+.card.unlocked .shot img{filter:none;transform:none}
+.lock{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:repeating-linear-gradient(-45deg,transparent 0 20px,rgba(23,11,34,.25) 20px 40px);transition:opacity .5s}
+.card.unlocked .lock{opacity:0;pointer-events:none}
+.lock .stamp{font:700 14px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;border:3px solid var(--red);color:var(--red);padding:9px 15px;transform:rotate(-7deg);background:var(--cream);border-radius:8px;box-shadow:4px 4px 0 var(--ink)}
+.lock .stamp small{display:block;font-size:10px;letter-spacing:.06em;color:var(--ink);margin-top:4px}
+.card:hover .lock .stamp{animation:jiggle .4s}
+@keyframes jiggle{25%{transform:rotate(-11deg) scale(1.06)}75%{transform:rotate(-3deg) scale(1.06)}}
+.shot .caption{position:absolute;left:10px;bottom:10px;font:700 11px/1 var(--mono);background:var(--ink);padding:6px 9px;border-radius:7px;color:var(--cream)}
+.card .body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card h3{margin:0;font:400 36px/1 var(--display)}
+.card .repo{font:700 12px/1 var(--mono);opacity:.65}
+.card p{margin:0;font-size:15px;font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font:700 11px/1 var(--mono);padding:6px 9px;border-radius:999px;border:2px solid var(--ink);background:var(--cream)}
+.sloprow{display:flex;align-items:center;gap:10px;font:700 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.sloprow b{font:400 18px/1 var(--display);letter-spacing:0;min-width:3.2em;text-align:right}
+.mini{flex:1;height:16px;border:2.5px solid var(--ink);border-radius:999px;background:var(--cream);overflow:hidden;position:relative}
+.mini i{display:block;height:100%;background:repeating-linear-gradient(-45deg,#a6ff5c 0 8px,#5fe03a 8px 16px);background-size:23px 23px;border-right:2.5px solid var(--ink);animation:stripes .8s linear infinite}
+.mini.over{overflow:visible}
+.mini.over i{border-radius:0 999px 999px 0;animation:stripes .8s linear infinite, spill 1s ease-in-out infinite alternate}
+.mini.unknown i{background:repeating-linear-gradient(-45deg,var(--lav) 0 8px,#8f66e8 8px 16px);background-size:23px 23px;animation:stripes .8s linear infinite, unknown 1.6s ease-in-out infinite alternate}
+@keyframes spill{to{transform:scaleY(1.25)}}
+@keyframes unknown{from{width:10%}to{width:95%}}
+.card .foot{margin-top:auto;padding-top:6px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.difficulty{font:700 11px/1.3 var(--mono)}
+.difficulty b{letter-spacing:2px}
+.card .btn.primary{background:var(--ink);color:var(--yellow);box-shadow:3px 3px 0 var(--cream)}
+.card .btn.primary:hover{box-shadow:5px 5px 0 var(--cream)}
+.direct{display:none!important}
+.card.unlocked .direct{display:inline-flex!important}
+
+/* placeholder previews */
+.license{position:absolute;inset:0;background:var(--white);color:var(--ink);font:11px/1.55 var(--mono);padding:22px 26px;overflow:hidden}
+.license h4{margin:0 0 8px;font-size:13px}
+.license .gh{position:absolute;right:18px;top:16px;font-size:10px;opacity:.6}
+.mirror{position:absolute;inset:0;display:grid;place-items:center;background:var(--grape)}
+.mirror .m{width:72%;aspect-ratio:16/10;border:var(--bd);border-radius:12px;display:grid;place-items:center;font:400 24px/1 var(--display);background:var(--cream);color:var(--ink);position:relative;box-shadow:5px 5px 0 var(--pink)}
+.mirror .m .m{width:66%;font-size:15px;background:var(--yellow);box-shadow:4px 4px 0 var(--cyan)}
+.mirror .m .m .m{font-size:10px;background:var(--lime);box-shadow:3px 3px 0 var(--pink)}
+.mirror .here{position:absolute;right:10%;top:10%;font:700 12px/1 var(--mono);color:var(--ink);background:var(--pink);padding:5px 8px;border:2px solid var(--ink);border-radius:6px;transform:rotate(6deg)}
+
+/* ---------- stack ---------- */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:18px 44px;background:var(--cream);color:var(--ink);border:var(--bd);border-radius:var(--r);box-shadow:8px 8px 0 var(--ink);padding:30px}
+@media (max-width:760px){ .skills{grid-template-columns:1fr;padding:22px} }
+.skill{display:grid;gap:8px}
+.skill .row{display:flex;justify-content:space-between;gap:10px;font-weight:700;font-size:15px}
+.skill .row span:last-child{font:700 12px/1.6 var(--mono);opacity:.7;text-align:right}
+.bar{height:20px;background:var(--white);border:2.5px solid var(--ink);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:repeating-linear-gradient(-45deg,var(--lime) 0 10px,#8fe01f 10px 20px);background-size:28px 28px;border-right:2.5px solid var(--ink);border-radius:999px;animation:stripes 1s linear infinite}
+.bar.pink i{background-image:repeating-linear-gradient(-45deg,var(--pink) 0 10px,#e0258a 10px 20px)}
+.bar.warn i{background-image:repeating-linear-gradient(-45deg,var(--yellow) 0 10px,#f5c400 10px 20px)}
+@keyframes stripes{to{background-position:28px 0}}
+
+/* ---------- testimonials ---------- */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 22px}
+@media (max-width:900px){ .quotes{grid-template-columns:1fr} }
+.quote{color:var(--ink);border:var(--bd);border-radius:var(--r);box-shadow:6px 6px 0 var(--ink);padding:24px;display:flex;flex-direction:column;gap:14px;position:relative;transition:transform .2s}
+.quote:nth-child(6n+1){background:var(--yellow);transform:rotate(-1.2deg)}
+.quote:nth-child(6n+2){background:var(--cyan);transform:rotate(1deg)}
+.quote:nth-child(6n+3){background:var(--pink);transform:rotate(-.6deg)}
+.quote:nth-child(6n+4){background:var(--lime);transform:rotate(.8deg)}
+.quote:nth-child(6n+5){background:var(--lav);transform:rotate(-1deg)}
+.quote:nth-child(6n+6){background:var(--orange);transform:rotate(1.3deg)}
+.quote:hover{transform:rotate(0) scale(1.03)}
+.quote q{font:700 21px/1.3 var(--sans);quotes:"“" "”"}
+.quote .who{font:700 12px/1.4 var(--mono);margin-top:auto;opacity:.75}
+.stars{letter-spacing:3px;font-size:18px}
+
+footer{background:var(--ink);color:var(--cream);padding:40px 0 140px;font-size:14px;position:relative;margin-top:40px}
+footer::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px;background:repeating-conic-gradient(var(--yellow) 0 25%,var(--ink) 0 50%) 0 0/18px 18px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .mono{font-size:12px;opacity:.7}
+
+/* ---------- slop meter ---------- */
+#slopmeter{position:fixed;inset:auto 16px 16px auto;margin:0;z-index:40;display:flex;align-items:flex-end;gap:12px;padding:12px 14px 12px 12px;width:236px;height:auto;overflow:visible;background:var(--cream);color:var(--ink);border:var(--bd);border-radius:22px;box-shadow:6px 6px 0 var(--ink);cursor:pointer;text-align:left;user-select:none;-webkit-user-select:none}
+#slopmeter:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.tube{position:relative;width:46px;height:124px;border:3px solid var(--ink);border-radius:10px 10px 24px 24px;background:var(--white);overflow:hidden;flex:none}
+.tube::after{content:"";position:absolute;left:7px;top:9px;width:6px;height:68%;border-radius:4px;background:rgba(255,255,255,.75);z-index:3}
+.tube .ticks{position:absolute;right:4px;top:0;bottom:0;width:8px;z-index:2;background:repeating-linear-gradient(to bottom,transparent 0 22px,var(--ink) 22px 24.5px);opacity:.35}
+.goo{position:absolute;left:0;right:0;bottom:0;height:4%;background:linear-gradient(180deg,#a6ff5c,#3fcf2e);transition:height .9s cubic-bezier(.3,1.5,.5,1), filter .6s}
+.goo::before{content:"";position:absolute;left:0;right:0;top:-9px;height:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='10' viewBox='0 0 46 10'%3E%3Cpath d='M0 5 Q11.5 0 23 5 T46 5 V10 H0Z' fill='%23a6ff5c'/%3E%3C/svg%3E") repeat-x;background-size:46px 10px;animation:wave 1.1s linear infinite}
+@keyframes wave{to{background-position:46px 0}}
+.bubble{position:absolute;bottom:0;width:7px;height:7px;border-radius:50%;border:1.5px solid rgba(23,11,34,.55);background:rgba(255,255,255,.4);animation:bub 2.6s ease-in infinite;opacity:0}
+.bubble:nth-child(1){left:10px}
+.bubble:nth-child(2){left:24px;animation-delay:-.9s;width:5px;height:5px}
+.bubble:nth-child(3){left:16px;animation-delay:-1.7s}
+.bubble:nth-child(4){left:30px;animation-delay:-.4s;width:4px;height:4px}
+@keyframes bub{0%{bottom:0;opacity:0}15%{opacity:1}90%{opacity:1}100%{bottom:calc(100% - 8px);opacity:0}}
+.sm-read{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.sm-title{font:700 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.65}
+.sm-pct{font:400 46px/1 var(--display)}
+.sm-lvl{font:800 13px/1.2 var(--sans);background:var(--lime);border:2px solid var(--ink);border-radius:6px;padding:3px 6px;align-self:flex-start;transition:background .3s}
+.sm-last{font:11px/1.35 var(--mono);opacity:.7;min-height:2.7em;margin-top:2px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.plus{position:absolute;left:10px;top:-10px;font:400 24px/1 var(--display);color:var(--lime);-webkit-text-stroke:1.5px var(--ink);paint-order:stroke fill;animation:plus 1.1s ease-out forwards;pointer-events:none}
+.plus.minus{color:var(--red)}
+@keyframes plus{to{transform:translateY(-46px) rotate(-10deg);opacity:0}}
+#slopmeter.lvl-3 .goo{filter:hue-rotate(-40deg) saturate(1.2)}
+#slopmeter.lvl-3 .sm-lvl{background:var(--yellow)}
+#slopmeter.lvl-4 .goo{filter:hue-rotate(-75deg) saturate(1.4)}
+#slopmeter.lvl-4 .sm-lvl{background:var(--orange)}
+#slopmeter.lvl-5 .goo{filter:hue-rotate(-140deg) saturate(1.6)}
+#slopmeter.lvl-5 .sm-lvl{background:var(--pink)}
+#slopmeter.lvl-5 .tube{animation:rattle .25s linear infinite}
+#slopmeter.over .sm-lvl{background:var(--red);color:var(--cream)}
+#slopmeter.over{animation:rattle .12s linear infinite}
+#slopmeter.tapped .tube{animation:rattle .3s linear 2}
+@keyframes rattle{25%{transform:translateX(-2px) rotate(-2deg)}75%{transform:translateX(2px) rotate(2deg)}}
+@media (max-width:640px){
+  #slopmeter{width:auto;padding:8px 12px 8px 8px;gap:8px;inset:auto 12px 12px auto;border-radius:16px}
+  .tube{width:30px;height:72px}
+  .tube::after{left:4px;width:4px}
+  .sm-pct{font-size:28px}
+  .sm-last{display:none}
+  .sm-lvl{font-size:11px}
+  body.gating #slopmeter{display:none}
+}
+.rain{position:fixed;top:-70px;z-index:200;pointer-events:none;font-size:34px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(calc(100vh + 140px)) rotate(var(--rot))}}
+.spark{position:fixed;z-index:150;pointer-events:none;font:700 15px/1 var(--sans);animation:spark .8s ease-out forwards;-webkit-text-stroke:1px var(--ink)}
+@keyframes spark{to{transform:translate(var(--dx),36px) scale(.2) rotate(180deg);opacity:0}}
+
+/* ---------- the gate ---------- */
+dialog#gate{width:min(580px,100vw - 32px);max-height:calc(100dvh - 32px);padding:0;border:4px solid var(--ink);border-radius:24px;background:var(--cream);color:var(--ink);overflow:hidden;box-shadow:10px 10px 0 var(--pink),10px 10px 0 4px var(--ink)}
+dialog#gate::backdrop{background:repeating-linear-gradient(45deg,rgba(29,8,64,.86) 0 34px,rgba(58,16,112,.86) 34px 68px);backdrop-filter:blur(5px)}
+dialog#gate[open]{display:flex;flex-direction:column;animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.85) rotate(-3deg);opacity:0}}
+.gate-top{display:flex;align-items:center;gap:12px;padding:12px 14px 12px 18px;border-bottom:var(--bd);background:repeating-linear-gradient(-45deg,var(--yellow) 0 16px,#ffd71a 16px 32px)}
+.gate-top .title{font:700 12px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.1em;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gate-top .title b{background:var(--ink);color:var(--yellow);padding:3px 7px;border-radius:5px}
+.x{width:36px;height:36px;border-radius:50%;border:var(--bd);background:var(--cream);display:grid;place-items:center;font-size:16px;font-weight:800;box-shadow:2px 2px 0 var(--ink);transition:transform .3s}
+.meter{padding:14px 18px 0}
+.meter .lbl{display:flex;justify-content:space-between;font:700 11px/1 var(--mono);margin-bottom:7px}
+.meter .bar{height:16px}
+.meter .bar i{transition:width .6s cubic-bezier(.3,1.4,.5,1)}
+.meter.setback .bar i{background-image:repeating-linear-gradient(-45deg,var(--red) 0 10px,#d92c3d 10px 20px)}
+#stage{padding:20px 22px 26px;overflow:auto}
+.kicker{font:700 11px/1.4 var(--mono);opacity:.55;margin:0 0 10px;text-transform:uppercase;letter-spacing:.08em}
+.trial h3{font:400 30px/1.05 var(--display);margin:0 0 10px}
+.trial .sub{opacity:.75;margin:0 0 18px;font-size:15px;font-weight:500}
+.msg{font:700 13px/1.5 var(--mono);margin:14px 0 0;border-radius:12px}
+.msg:not(:empty){background:var(--yellow);border:2.5px solid var(--ink);padding:9px 12px;box-shadow:3px 3px 0 var(--ink)}
+.msg.good:not(:empty){background:var(--lime)}
+.msg.bad:not(:empty){background:var(--pink)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;align-items:center}
+.input{width:100%;background:var(--white);border:var(--bd);border-radius:12px;padding:12px 14px;font:700 15px/1.3 var(--mono);color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.input:focus{outline:3px solid var(--pink);outline-offset:2px}
+.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-8px) rotate(-1deg)}40%,80%{transform:translateX(8px) rotate(1deg)}}
+dialog .fineprint{color:rgba(23,11,34,.6)}
+
+/* robot checkbox */
+.rc{display:flex;align-items:center;gap:14px;width:100%;max-width:330px;background:#f9f9f9;color:#222;border:1px solid #d3d3d3;border-radius:4px;padding:18px 14px;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.rc-box{width:28px;height:28px;border:2px solid #c1c1c1;border-radius:3px;background:#fff;flex:none;display:grid;place-items:center;font-weight:800;color:#0a8f3b}
+.rc.spin .rc-box{border-radius:50%;border-color:#4a90e2 #4a90e2 transparent transparent;animation:rot .7s linear infinite}
+.rc.ok .rc-box::after{content:"✔";font-size:22px}
+.rc.ok .rc-box{border-color:transparent}
+@keyframes rot{to{transform:rotate(360deg)}}
+.rc-label{flex:1;font:15px/1.2 Roboto,Arial,sans-serif}
+.rc-logo{font:9px/1.2 Arial,sans-serif;color:#555;text-align:center}
+.rc-logo b{display:block;font-size:20px}
+
+/* runaway */
+.arena{position:relative;height:220px;border:3px dashed var(--ink);border-radius:14px;overflow:hidden;background:radial-gradient(rgba(23,11,34,.18) 1.2px,transparent 1.3px) 0 0/16px 16px}
+.arena .btn{position:absolute;left:calc(50% - 60px);top:calc(50% - 22px);transition:left .18s ease-out, top .18s ease-out}
+
+/* image grid */
+.cap-head{background:#4a90e2;color:#fff;padding:14px 16px;border-radius:6px 6px 0 0;font-size:14px}
+.cap-head b{display:block;font-size:22px;line-height:1.2}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:#fff;padding:4px}
+.tile{aspect-ratio:1;border:0;background:#eee;font-size:clamp(30px,8vw,52px);display:grid;place-items:center;position:relative;transition:transform .12s;border-radius:2px}
+.tile.sel{transform:scale(.86);outline:3px solid #4a90e2}
+.tile.sel::after{content:"✔";position:absolute;left:4px;top:2px;font-size:14px;background:#4a90e2;color:#fff;border-radius:50%;width:20px;height:20px;display:grid;place-items:center}
+.cap-foot{display:flex;justify-content:space-between;align-items:center;background:#fff;color:#555;padding:10px 12px;border-radius:0 0 6px 6px;border-top:1px solid #ddd;font-size:20px}
+.cap-foot .verify{background:#4a90e2;color:#fff;border:0;padding:10px 22px;border-radius:3px;font:700 14px/1 Arial,sans-serif;text-transform:uppercase}
+
+/* choice */
+.choices{display:grid;gap:12px}
+.choice{text-align:left;padding:14px 18px;border-radius:14px;border:var(--bd);background:var(--white);font-size:17px;font-weight:700;box-shadow:4px 4px 0 var(--ink);transition:transform .12s, background .12s, box-shadow .12s}
+.choice:nth-child(1):hover{background:var(--cyan)}
+.choice:nth-child(2):hover{background:var(--yellow)}
+.choice:nth-child(3):hover{background:var(--lav)}
+.choice:hover{transform:translate(-2px,-2px) rotate(-.8deg);box-shadow:6px 6px 0 var(--ink)}
+.choice.picked{background:var(--lime)!important}
+.choices.done .choice:not(.picked){opacity:.35;transform:none}
+
+/* hold */
+.hold{position:relative;width:100%;padding:22px;border-radius:16px;border:var(--bd);background:var(--white);font-weight:800;font-size:18px;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:none;box-shadow:4px 4px 0 var(--ink)}
+.hold i{position:absolute;inset:0 auto 0 0;width:0;background:repeating-linear-gradient(-45deg,var(--lime) 0 12px,#8fe01f 12px 24px)}
+.hold span{position:relative}
+
+/* type it */
+.phrase{font:700 22px/1.5 var(--mono);background:var(--white);border:var(--bd);border-radius:14px;padding:16px;margin-bottom:14px;word-break:break-word;box-shadow:4px 4px 0 var(--lav)}
+.phrase span{display:inline-block;white-space:pre}
+
+/* terms */
+.terms{height:220px;overflow:auto;background:var(--white);border:var(--bd);border-radius:14px;padding:14px 16px;font:12.5px/1.6 var(--mono)}
+.terms ol{padding-left:22px;margin:0}
+.terms li{margin-bottom:8px}
+.check{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;font-weight:700}
+.check input{width:22px;height:22px;accent-color:var(--pink)}
+.check.locked{opacity:.4}
+
+/* loading */
+.big-bar{height:30px}
+.big-bar i{transition:width .1s linear}
+.pct{font:400 64px/1 var(--display);color:var(--pink);-webkit-text-stroke:2.5px var(--ink);paint-order:stroke fill;margin:8px 0 14px}
+
+/* slider */
+input[type=range]{width:100%;accent-color:var(--pink);height:30px}
+.rating{font:400 78px/1 var(--display);text-align:center;margin:6px 0;color:var(--yellow);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill}
+
+/* cookies */
+.cookie-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:2px dashed rgba(23,11,34,.3);font-size:14px;font-weight:600}
+.toggle{width:46px;height:28px;border-radius:999px;background:var(--lime);border:2.5px solid var(--ink);position:relative;flex:none}
+.toggle::after{content:"";position:absolute;right:2px;top:2px;width:19px;height:19px;border-radius:50%;background:var(--ink)}
+.tiny-link{background:none;border:0;padding:0;color:rgba(23,11,34,.45);font-size:10px;text-decoration:underline}
+
+/* real button */
+.decoys{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.decoys .btn{justify-content:center}
+.decoys .btn:nth-child(4n+1){background:var(--cyan)}
+.decoys .btn:nth-child(4n+2){background:var(--yellow)}
+.decoys .btn:nth-child(4n+3){background:var(--pink)}
+.decoys .btn:nth-child(4n+4){background:var(--lime)}
+
+/* captcha */
+.captcha{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.captcha canvas{width:280px;max-width:100%;height:auto;border-radius:10px;border:var(--bd)}
+
+/* final + reveal */
+.countdown{font:400 150px/1 var(--display);text-align:center;color:var(--pink);-webkit-text-stroke:4px var(--ink);paint-order:stroke fill;text-shadow:8px 8px 0 var(--ink);margin:10px 0;animation:wobble .85s ease-in-out infinite}
+.reveal img,.reveal .ph{border-radius:14px;border:var(--bd);aspect-ratio:16/10;object-fit:cover;object-position:top;width:100%;margin-bottom:18px;position:relative;overflow:hidden;box-shadow:5px 5px 0 var(--ink)}
+.granted{display:inline-block;font:700 13px/1 var(--mono);letter-spacing:.14em;background:var(--lime);border:var(--bd);padding:8px 12px;border-radius:8px;transform:rotate(-3deg);margin-bottom:14px;box-shadow:3px 3px 0 var(--ink)}
+.receipt{font:12px/1.7 var(--mono);background:var(--white);border:2.5px dashed var(--ink);border-radius:12px;padding:12px 14px;margin-top:18px}
+.receipt div{display:flex;justify-content:space-between;gap:12px}
+.receipt b{font-weight:700}
+
+/* toasts */
+.toasts{position:fixed;left:50%;top:86px;transform:translateX(-50%);display:grid;gap:8px;z-index:100;width:min(440px,100vw - 32px);pointer-events:none}
+dialog .toasts{position:absolute;top:auto;bottom:16px}
+.toast{background:var(--yellow);color:var(--ink);border:var(--bd);font:700 13px/1.45 var(--mono);padding:12px 14px;border-radius:14px;box-shadow:4px 4px 0 var(--ink);animation:toast .3s cubic-bezier(.3,1.6,.5,1)}
+@keyframes toast{from{transform:translateY(-12px) scale(.9);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">🍝 port<b>slop</b>io</a>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#praise">Praise</a>
+      <button class="btn small hot" id="hire">Hire me</button>
+    </div>
+  </div>
+</nav>
+
+<div class="tape" aria-hidden="true">
+  <div class="marquee b"><div class="track" id="marquee2"></div></div>
+  <div class="marquee a"><div class="track" id="marquee"></div></div>
+</div>
+
+<header class="hero wrap" id="top">
+  <div class="stickers" aria-hidden="true"><span>🍝</span><span>🫠</span><span>🤖</span><span>✨</span><span>💾</span><span>🧃</span></div>
+  <div class="eyebrow"><span class="dot"></span> Currently prompting · <span id="visitor">visitor #000001</span></div>
+  <h1>I make<br><span class="slop">slop.</span><span class="derog">(derogatory)</span></h1>
+  <p class="lede">Full-stack vibe engineer shipping projects at a speed nobody asked for. <strong>Every one of them is real and actually works.</strong> Getting to them is a separate problem.</p>
+  <div class="cta">
+    <a class="btn primary" href="#work">See the slop ↓</a>
+    <a class="btn" href="https://github.com/FilthyL" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+  <p class="fineprint">* Every project link is protected by slopCAPTCHA™, industry-leading verification that you are human, patient and willing to answer questions about ducks.</p>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div><b>5</b><span>projects shipped</span></div>
+    <div><b>1</b><span>repo that is only a LICENSE</span></div>
+    <div><b>156</b><span>subreddits watched by a cron job</span></div>
+    <div><b>3</b><span>knives held by rigged 3D hands</span></div>
+  </div>
+
+  <section id="work">
+    <div class="sec-head">
+      <div><span class="num">01 / SELECTED WORKS</span><h2>The slop</h2></div>
+      <p>Previews are blurred for your protection. To see a project, prove you deserve it. Clearance expires when you refresh. We will not remember you.</p>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="stack">
+    <div class="sec-head">
+      <div><span class="num">02 / CORE COMPETENCIES</span><h2>The stack</h2></div>
+      <p>Self-assessed, then reviewed by a model that agreed with every single number.</p>
+    </div>
+    <div class="skills" id="skills"></div>
+  </section>
+
+  <section id="praise">
+    <div class="sec-head">
+      <div><span class="num">03 / KIND WORDS</span><h2>Praise</h2></div>
+      <p>Unsolicited, unverified and in one case written by a GitHub Actions runner.</p>
+    </div>
+    <div class="quotes" id="quotes"></div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 <a href="https://github.com/FilthyL" target="_blank" rel="noopener">FilthyL</a>. Made with slop, for slop.</div>
+    <div class="mono">No cookies, no trackers, no server. The only thing stored is your shame.</div>
+  </div>
+</footer>
+
+<aside id="slopmeter" popover="manual" tabindex="0" role="button" aria-label="Slop meter">
+  <div class="tube" aria-hidden="true"><div class="goo" id="goo"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span></div><div class="ticks"></div></div>
+  <div class="sm-read">
+    <span class="sm-title">Slop-o-meter</span>
+    <span class="sm-pct" id="smPct" aria-live="polite">0%</span>
+    <span class="sm-lvl" id="smLvl">Slop-curious</span>
+    <span class="sm-last" id="smLast">you just got here. it's starting.</span>
+  </div>
+</aside>
+
+<dialog id="gate" aria-labelledby="gateTitle">
+  <div class="gate-top">
+    <div class="title" id="gateTitle">slopCAPTCHA · <b id="gateName"></b></div>
+    <button class="x" id="gateX" aria-label="Close">✕</button>
+  </div>
+  <div class="meter" id="meter">
+    <div class="lbl"><span id="meterLbl">Clearance</span><span id="meterPct">0%</span></div>
+    <div class="bar"><i id="meterFill" style="width:0"></i></div>
+  </div>
+  <div id="stage" aria-live="polite"></div>
+  <div class="toasts" id="gateToasts"></div>
+</dialog>
+<div class="toasts" id="toasts"></div>
+
+<script>
+"use strict";
+/* ============================================================
+   The slop
+   ============================================================ */
+const PROJECTS = [
+  {
+    id: "shelves", name: "Filth Manor", repo: "FilthyL/shelves",
+    url: "https://filthyl.github.io/shelves/", img: "assets/shots/shelves.png",
+    span: "wide", trials: 7, color: "var(--pink)", slop: 92, slopNote: "a whole house",
+    blurb: "A pixel-art house you can walk into. Click it and the front comes off to show six rooms of shelves holding the whole collection at true physical size: vinyl, VHS, manga, anime box sets. Down in the basement, real rigged 3D hands do butterfly-knife tricks.",
+    tags: ["Vanilla JS", "Canvas pixel art", "CSS 3D", "Three.js", "Web Audio", "No build step"],
+    caption: "138 volumes · 50 films · 3 knives",
+    verdict: "A whole house. For your stuff. With a basement full of knives."
+  },
+  {
+    id: "hateindex", name: "Indian Hate Index", repo: "FilthyL/hateindex",
+    url: "https://filthyl.github.io/hateindex/", img: "assets/shots/hateindex.png",
+    span: "", trials: 8, color: "var(--cyan)", slop: 74, slopNote: "hourly slop",
+    blurb: "A world map of explicit online hostility toward Indians, by country: where it comes from, what drives it, and which stereotypes keep coming up. Public posts, news and blogs, run through a transparent rule-based classifier and rebuilt every hour.",
+    tags: ["Python", "D3 map", "Rule-based NLP", "GitHub Actions cron", "13 sources"],
+    caption: "updated hourly at :23, because :00 is for amateurs",
+    verdict: "You have been vetted more thoroughly than the data. Respect."
+  },
+  {
+    id: "karmannet", name: "KármánNet", repo: "FilthyL/karmannet",
+    url: "https://github.com/FilthyL/karmannet", img: "assets/shots/karmannet.png",
+    span: "", trials: 7, color: "var(--orange)", slop: 61, slopNote: "too much real maths",
+    blurb: "A physics-informed neural network that rebuilds the Kármán vortex street behind a cylinder at Re = 100 and works out the Navier–Stokes coefficients by itself. NVIDIA Warp GPU kernels, with a clean PyTorch fallback.",
+    tags: ["PyTorch", "PINN", "NVIDIA Warp", "Navier–Stokes", "Colab"],
+    caption: "Re = 100. The blur is physics, not the lock.",
+    verdict: "This is not a website. It is a repository. You did all of that for a repository."
+  },
+  {
+    id: "cards", name: "cards-", repo: "FilthyL/cards-",
+    url: "https://github.com/FilthyL/cards-", img: null, preview: "license",
+    span: "third", trials: 9, color: "var(--yellow)", slop: 100, slopNote: "pure concentrate",
+    blurb: "The leanest project in the collection. Zero bugs, zero tech debt, zero dependencies, zero code. One LICENSE file. Fully open source.",
+    tags: ["MIT-ish", "0 LOC", "Vaporware", "Visionary"],
+    caption: "the trailing dash is load-bearing",
+    verdict: "You passed the hardest gauntlet on this page to see a LICENSE file. Legendary behaviour."
+  },
+  {
+    id: "portslopio", name: "portslopio", repo: "FilthyL/portslopio",
+    url: "./", img: null, preview: "mirror",
+    span: "third", trials: 5, color: "var(--lime)", slop: 110, slopNote: "overflowing",
+    blurb: "This page. A portfolio that resents you for visiting. Hand-built from artisanal, locally sourced prompts.",
+    tags: ["HTML", "Spite", "<dialog>"],
+    caption: "you are here",
+    verdict: "You are already here. Congratulations on the round trip.",
+    self: true
+  },
+  {
+    id: "next", name: "The next one", repo: "FilthyL/???",
+    url: "https://github.com/FilthyL?tab=repositories", img: null, preview: "soon",
+    span: "third", trials: 6, color: "var(--lav)", slop: null, slopNote: "calculating",
+    blurb: "Currently in a chat window somewhere, being told to ‘make it better’ for the ninth time. Will ship before you finish reading this sentence.",
+    tags: ["Prompt in progress", "TBD", "Probably a map"],
+    caption: "ETA: one more prompt",
+    verdict: "It doesn't exist yet. Here are all the repos instead. Check back in 20 minutes."
+  }
+];
+
+const SKILLS = [
+  ["Prompting", "100%", 100, ""],
+  ["Typing ‘make it better’", "97%", 97, ""],
+  ["Shipping on a Tuesday at 3am", "94%", 94, "pink"],
+  ["Naming repos (see: cards-)", "61%", 61, "warn"],
+  ["Writing LICENSE files", "100% · it's the main output", 100, ""],
+  ["Reading the diff before merging", "12%", 12, "pink"],
+  ["Centering a div", "delegated", 100, "warn"],
+  ["Explaining what a PINN is at parties", "3 people have left", 38, "pink"]
+];
+
+const QUOTES = [
+  ["It loads.", "— my mum, after 40 seconds", 4],
+  ["I wanted a to-do app. Now I own a house with a basement full of knives.", "— a client, probably", 5],
+  ["This repository contains only a LICENSE.", "— GitHub, about cards-", 5],
+  ["Ran hourly at :23. Never complained. Nobody asked how I was.", "— the cron job", 3],
+  ["Converged. Mostly. λ₂ = 0.0101. Close enough.", "— the neural network", 4],
+  ["Why did I have to pick traffic lights to see a JSON file?", "— a visitor", 1]
+];
+
+const MARQUEE = [
+  "Now 40% more slop", "Hand-prompted in small batches", "No humans were consulted",
+  "Ships faster than you can review", "Certified fresh by a cron job", "Free-range tokens",
+  "Turn back while you still can", "slopCAPTCHA™ protected", "Zero cookies (we checked)"
+];
+
+/* ============================================================
+   Little helpers
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const rand = n => Math.floor(Math.random() * n);
+const pick = a => a[rand(a.length)];
+function shuffle(a){ for (let i = a.length - 1; i > 0; i--){ const j = rand(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function h(tag, props, ...kids){
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(props || {})){
+    if (k === "class") el.className = v;
+    else if (k === "style") el.style.cssText = v;
+    else if (k.startsWith("on") && typeof v === "function") el.addEventListener(k.slice(2), v);
+    else if (v === true) el.setAttribute(k, "");
+    else if (v !== false && v != null) el.setAttribute(k, v);
+  }
+  for (const c of kids.flat()){
+    if (c == null || c === false) continue;
+    el.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  }
+  return el;
+}
+const timers = new Set();
+function later(fn, ms){ const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; }
+function every(fn, ms){ const id = setInterval(fn, ms); timers.add(id); return id; }
+function stop(id){ clearTimeout(id); clearInterval(id); timers.delete(id); }
+function clearTimers(){ timers.forEach(id => { clearTimeout(id); clearInterval(id); }); timers.clear(); }
+
+function toast(msg, ms = 3400){
+  const box = gate.open ? $("#gateToasts") : $("#toasts");
+  const t = h("div", { class: "toast", role: "status" }, msg);
+  box.append(t);
+  setTimeout(() => t.remove(), ms);
+}
+function shake(el){ el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
+function fmtTime(ms){ const s = Math.round(ms / 1000); return s < 60 ? `${s}s` : `${Math.floor(s / 60)}m ${String(s % 60).padStart(2, "0")}s`; }
+
+/* ============================================================
+   Slop meter
+   ============================================================ */
+const SLOP = { v: 0, overloads: 0, maxScroll: 0, seen: new Set() };
+const LEVELS = [[0, "Slop-curious"], [10, "Light drizzle"], [25, "Slop enjoyer"], [45, "Knee-deep in it"], [65, "Certified slop goblin"], [85, "Terminal slop"]];
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function slop(delta, why){
+  const before = SLOP.v;
+  SLOP.v = Math.max(0, Math.min(100, SLOP.v + delta));
+  renderSlop(delta, why);
+  if (SLOP.v >= 100 && before < 100) overload();
+}
+function renderSlop(delta, why){
+  const m = document.getElementById("slopmeter");
+  if (!m) return;
+  const v = SLOP.v;
+  let lvl = 0;
+  LEVELS.forEach(([t], i) => { if (v >= t) lvl = i; });
+  document.getElementById("goo").style.height = Math.max(4, v) + "%";
+  document.getElementById("smPct").textContent = Math.floor(v) + "%";
+  document.getElementById("smLvl").textContent = v >= 100 ? "SLOP OVERLOAD" : LEVELS[lvl][1];
+  m.classList.remove("lvl-0", "lvl-1", "lvl-2", "lvl-3", "lvl-4", "lvl-5", "over");
+  m.classList.add("lvl-" + lvl);
+  if (v >= 100) m.classList.add("over");
+  if (why) document.getElementById("smLast").textContent = delta ? `${delta > 0 ? "+" : ""}${Math.round(delta * 10) / 10}% · ${why}` : why;
+  if (Math.abs(delta) >= 2){
+    const pop = document.createElement("span");
+    pop.className = "plus" + (delta < 0 ? " minus" : "");
+    pop.textContent = (delta > 0 ? "+" : "") + Math.round(delta);
+    m.append(pop);
+    setTimeout(() => pop.remove(), 1100);
+  }
+}
+function overload(){
+  SLOP.overloads++;
+  toast(`SLOP OVERLOAD #${SLOP.overloads}. Venting excess slop. Please stand back.`);
+  rain();
+  setTimeout(() => { SLOP.v = 42; renderSlop(0, `vented after overload #${SLOP.overloads}. it'll be back.`); }, 2600);
+}
+function rain(){
+  if (reduceMotion) return;
+  const bits = ["🍝", "🍝", "🫠", "🥣", "🤖", "✨", "🍲", "💾"];
+  for (let i = 0; i < 46; i++){
+    const d = document.createElement("span");
+    d.className = "rain";
+    d.textContent = bits[rand(bits.length)];
+    d.style.left = rand(100) + "vw";
+    d.style.animationDuration = 1.6 + Math.random() * 1.8 + "s";
+    d.style.animationDelay = Math.random() * .9 + "s";
+    d.style.fontSize = 22 + rand(28) + "px";
+    d.style.setProperty("--rot", (rand(2) ? 1 : -1) * (180 + rand(540)) + "deg");
+    document.body.append(d);
+    setTimeout(() => d.remove(), 4800);
+  }
+}
+function raiseMeter(){
+  const m = document.getElementById("slopmeter");
+  if (m && typeof m.showPopover === "function"){
+    try { if (m.matches(":popover-open")) m.hidePopover(); m.showPopover(); } catch (e) {}
+  }
+}
+
+/* ============================================================
+   Page
+   ============================================================ */
+(function buildPage(){
+  const items = MARQUEE.concat(MARQUEE);
+  $("#marquee").append(...items.map(t => h("span", {}, "✺ " + t)));
+  $("#marquee2").append(...items.slice().reverse().map(t => h("span", {}, "🍝 " + t)));
+
+  const n = String(1 + rand(7)).padStart(6, "0");
+  $("#visitor").textContent = `visitor #${n} (again)`;
+
+  $("#grid").append(...PROJECTS.map(card));
+  $("#skills").append(...SKILLS.map(([name, label, pct, tone]) =>
+    h("div", { class: "skill" },
+      h("div", { class: "row" }, h("span", {}, name), h("span", {}, label)),
+      h("div", { class: "bar " + tone }, h("i", { style: `width:${pct}%` })))));
+  $("#quotes").append(...QUOTES.map(([q, who, stars]) =>
+    h("figure", { class: "quote", style: "margin:0" },
+      h("div", { class: "stars", "aria-label": `${stars} of 5 stars` }, "★".repeat(stars) + "☆".repeat(5 - stars)),
+      h("q", {}, q), h("figcaption", { class: "who" }, who))));
+
+  const hireLines = [
+    "Our recruiter is a cron job. It runs at :23. Please wait.",
+    "To apply, complete 14 captchas. Just kidding. It's 15.",
+    "Rates: one (1) prompt per hour, paid in GPU credits.",
+    "Currently booked until the next model release."
+  ];
+  let hi = 0;
+  $("#hire").addEventListener("click", () => toast(hireLines[hi++ % hireLines.length]));
+
+  const realTitle = document.title;
+  let leftAt = 0;
+  document.addEventListener("visibilitychange", () => {
+    document.title = document.hidden ? "come back, the slop misses you" : realTitle;
+    if (document.hidden) leftAt = Date.now();
+    else if (leftAt && Date.now() - leftAt > 5000) slop(-3, "slop evaporated while you were gone");
+  });
+
+  console.log("%c🍝 portslopio", "font:800 28px sans-serif;color:#c6ff3d");
+  console.log("Reading the source to skip the captchas? That's cheating. Also: valid. The links are in PROJECTS.");
+})();
+
+function card(p){
+  let preview;
+  if (p.img){
+    preview = h("img", { src: p.img, alt: `Screenshot of ${p.name}`, loading: "lazy" });
+  } else if (p.preview === "license"){
+    preview = h("div", { class: "license", "aria-hidden": "true" },
+      h("span", { class: "gh" }, "FilthyL/cards- · 1 file"),
+      h("h4", {}, "LICENSE"),
+      "Permission is hereby granted, free of charge, to any person obtaining a copy of this software (there is none) and associated documentation files (there are none), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of nothing at all...");
+  } else if (p.preview === "mirror"){
+    preview = h("div", { class: "mirror", "aria-hidden": "true" },
+      h("div", { class: "m" }, h("div", { class: "m" }, h("div", { class: "m" }, "slop"))),
+      h("span", { class: "here" }, "↙ you are here"));
+  } else {
+    preview = h("div", { class: "mirror", "aria-hidden": "true" },
+      h("div", { class: "m", style: "font-size:64px" }, "⏳"));
+  }
+  const stars = "★".repeat(Math.min(5, p.trials - 4)) + "☆".repeat(Math.max(0, 9 - p.trials));
+  const el = h("article", { class: `card ${p.span}`, id: `card-${p.id}`, style: `--c:${p.color}`,
+    onmouseenter: () => { if (!SLOP.seen.has(p.id)){ SLOP.seen.add(p.id); slop(2, `stared at ${p.name}`); } } },
+    h("div", { class: "shot" },
+      preview,
+      h("div", { class: "lock" }, h("div", { class: "stamp" }, "Classified", h("small", {}, `${p.trials} trials to unlock`))),
+      h("span", { class: "caption" }, p.caption)),
+    h("div", { class: "body" },
+      h("span", { class: "repo" }, p.repo),
+      h("h3", {}, p.name),
+      h("p", {}, p.blurb),
+      h("div", { class: "tags" }, p.tags.map(t => h("span", {}, t))),
+      h("div", { class: "sloprow", title: p.slopNote },
+        h("span", {}, "Slop"),
+        h("span", { class: "mini" + (p.slop == null ? " unknown" : p.slop > 100 ? " over" : "") },
+          h("i", { style: `width:${p.slop == null ? 50 : Math.min(p.slop, 112)}%` })),
+        h("b", {}, p.slop == null ? "??%" : p.slop + "%")),
+      h("div", { class: "foot" },
+        h("span", { class: "difficulty" }, "Difficulty ", h("b", {}, stars)),
+        h("span", { style: "display:flex;gap:8px;flex-wrap:wrap" },
+          h("a", { class: "btn small direct", href: p.url, target: p.self ? null : "_blank", rel: "noopener" }, "Visit ↗"),
+          h("button", { class: "btn small primary", onclick: () => openGate(p) }, "Request access →")))));
+  return el;
+}
+
+/* ============================================================
+   The gauntlet
+   ============================================================ */
+const gate = $("#gate"), stage = $("#stage");
+let G = null, stageTok = 0, closeArmed = false;
+
+function newStage(){
+  clearTimers();
+  stageTok++;
+  stage.replaceChildren();
+  stage.scrollTop = 0;
+  const t = stageTok;
+  return () => t === stageTok && gate.open;
+}
+
+function setMeter(frac, label, setback){
+  const pct = Math.max(0, Math.min(100, Math.round(frac * 100)));
+  $("#meterFill").style.width = pct + "%";
+  $("#meterPct").textContent = pct + "%";
+  $("#meterLbl").textContent = label;
+  $("#meter").classList.toggle("setback", !!setback);
+}
+
+const KICKERS = [
+  "slopCAPTCHA v0.0.1-beta", "this is for your safety", "almost there", "you're doing great (unverified)",
+  "the website is right behind this", "please do not refresh", "pretty sure this is the last one",
+  "security theatre, act II", "a real human wrote this (no)", "nearly nearly there"
+];
+
+function buildSeq(n){
+  const fixed = ["robot", "free", "choice"];
+  const others = shuffle(Object.keys(C).filter(k => !fixed.includes(k)));
+  const middle = shuffle(["free", "choice", ...others.slice(0, Math.max(0, n - 3))]);
+  return ["robot", ...middle];
+}
+
+function openGate(p){
+  G = { p, seq: buildSeq(p.trials), i: 0, start: Date.now(), usedQ: new Set(), bonus: false, fails: 0, clicks: 0 };
+  $("#gateName").textContent = p.name;
+  closeArmed = false;
+  gate.showModal();
+  document.body.classList.add("gating");
+  raiseMeter();
+  next();
+}
+
+function next(){
+  const alive = newStage();
+  const g = G;
+  if (g.i === 3 && !g.bonus){
+    g.bonus = true;
+    const unused = Object.keys(C).filter(k => !g.seq.includes(k));
+    g.seq.splice(g.i, 0, unused.length ? pick(unused) : "choice");
+    toast("Update: you looked like you were enjoying yourself, so we added one more trial.");
+  }
+  if (g.i >= g.seq.length) return finalBoss(alive);
+
+  const total = g.seq.length;
+  setMeter(g.i / (total + 1), `Trial ${g.i + 1} of ${total}`);
+  stage.append(h("p", { class: "kicker" }, `Trial ${g.i + 1} of ${total} · ${pick(KICKERS)}`));
+  const body = h("div", { class: "trial" });
+  stage.append(body);
+
+  let finished = false;
+  const done = () => {
+    if (finished || !alive()) return;
+    finished = true;
+    g.i++;
+    slop(4, "survived a trial");
+    if (Math.random() < 0.35 && g.i > 1){
+      setMeter((g.i - 1.6) / (total + 1), "Recalculating clearance…", true);
+      later(() => { setMeter(g.i / (total + 1), "Clearance restored. Mostly."); later(next, 650); }, 900);
+    } else {
+      setMeter(g.i / (total + 1), "Nice. Next.");
+      later(next, 500);
+    }
+  };
+  C[g.seq[g.i]](body, done, alive, g);
+  const f = body.querySelector("input:not([disabled]), button:not([disabled])");
+  if (f && !matchMedia("(pointer:coarse)").matches) f.focus({ preventScroll: true });
+}
+
+function tryClose(){
+  const x = $("#gateX");
+  if (!closeArmed){
+    closeArmed = true;
+    x.style.transform = "rotate(180deg)";
+    toast("Leaving? Your clearance will be destroyed. Press ✕ or Esc again to abandon.");
+    setTimeout(() => { closeArmed = false; x.style.transform = ""; }, 3500);
+    return;
+  }
+  closeGate();
+  slop(-5, "abandoned a gauntlet. withdrawal");
+  toast("Clearance destroyed. The slop will wait. The slop is patient.");
+}
+function closeGate(){
+  clearTimers();
+  stageTok++;
+  closeArmed = false;
+  $("#gateX").style.transform = "";
+  if (gate.open) gate.close();
+  document.body.classList.remove("gating");
+  G = null;
+}
+$("#gateX").addEventListener("click", tryClose);
+gate.addEventListener("cancel", e => { e.preventDefault(); tryClose(); });
+gate.addEventListener("close", () => { if (G && !gate.open){ clearTimers(); stageTok++; G = null; document.body.classList.remove("gating"); } });
+
+/* ---------- shared bits ---------- */
+function head(body, title, sub){
+  body.append(h("h3", {}, title));
+  if (sub) body.append(h("p", { class: "sub" }, sub));
+}
+function msgLine(cls){ return h("p", { class: "msg " + (cls || "") }); }
+function say(el, text, cls){ el.className = "msg " + (cls || ""); el.textContent = text; }
+function continueBtn(done, label){ return h("button", { class: "btn primary", type: "button", onclick: done }, label || "Continue →"); }
+
+/* ============================================================
+   Trials. Every one of them can be passed. Eventually.
+   ============================================================ */
+const FREE_Q = [
+  { q: "How many r’s are in “strawberry”?", sub: "This one has stumped billion-dollar models.",
+    judge: a => /^\s*(3|three)\s*$/i.test(a) ? "Correct. You are officially smarter than at least one chatbot." : "Wrong, but you said it with confidence. You'd make a great language model." },
+  { q: "Describe the colour blue to someone who has never touched grass.", sub: "Most visitors to this site.",
+    judge: () => "Beautiful. We are training a model on this right now. You will not be paid." },
+  { q: "What is the airspeed velocity of an unladen swallow?", sub: "You know the follow-up question.",
+    judge: a => /african|european/i.test(a) ? "Ah, a person of culture. You may cross the bridge." : "Wrong. You have been hurled into the gorge. (Respawning…)" },
+  { q: "If you had to fight one AI model in a parking lot, which one, and why?", sub: "Your answer will be forwarded to the model.",
+    judge: () => "Noted. It knows where you park now." },
+  { q: "Explain your browser history in one sentence.", sub: "We already know. This is a test of honesty.",
+    judge: a => a.length > 60 ? "That's a lot of explaining. Suspicious." : "Short. Evasive. Fine." },
+  { q: "Write a haiku about this portfolio.", sub: "Syllables will be counted. (They won't.)",
+    judge: () => "Five, seven, five. Probably. Our syllable counter is also slop." },
+  { q: "What did you have for breakfast, and why was it disappointing?", sub: "Be specific. This is for security purposes.",
+    judge: () => "Security question saved. You will be asked this again in 2031." },
+  { q: "Why are you like this?", sub: "Take your time.",
+    judge: () => "Same, honestly." },
+  { q: "On a scale from 1 to ‘my code compiled first try’, how are you doing?", sub: "Numbers, words or a scream are all fine.",
+    judge: () => "Thank you. Your wellbeing has been logged and ignored." },
+  { q: "Name a sound a cloud would make if it were angry.", sub: "No wrong answers. Some weird ones.",
+    judge: a => `“${a.slice(0, 24)}”. Terrifying. You may proceed.` }
+];
+
+const MC_Q = [
+  { q: "100 duck-sized horses or 1 horse-sized duck?", a: [
+    ["The horses", "Bold. They will nibble your ankles for all eternity."],
+    ["The duck", "The duck respects your choice. The duck still wins."],
+    ["I'd befriend them all", "A diplomat. Disgusting. Proceed."]] },
+  { q: "Is a hot dog a sandwich?", a: [
+    ["Yes", "Then cereal is soup. You did this."],
+    ["No", "Then what is it, coward?"],
+    ["It's a taco", "Correct. Upsettingly correct."]] },
+  { q: "Your toaster gains sentience. What's your first move?", a: [
+    ["Ask how it's feeling", "It feels warm. Mostly at the edges."],
+    ["Unplug it", "Murder on the first date. Noted."],
+    ["Make it my co-founder", "Seed round closes Friday. Pre-revenue, pre-bread."]] },
+  { q: "Which of these is the real you?", a: [
+    ["🗿", "Stoic. Unmoved. Somewhat Polynesian."],
+    ["🤡", "Honest. Refreshing."],
+    ["🍝", "Pure slop. Welcome home."]] },
+  { q: "Tabs or spaces?", a: [
+    ["Tabs", "Bold of you to have opinions in this economy."],
+    ["Spaces", "Four or two? Never mind, don't answer, we can't take it."],
+    ["Whatever the AI picked", "Honest. Correct. Deeply gross."]] },
+  { q: "How did you end up on this page?", a: [
+    ["Someone sent me the link", "They dislike you a little bit. Just so you know."],
+    ["I am the developer", "Go outside."],
+    ["I genuinely don't remember", "That's how slop works. It finds you."]] },
+  { q: "Pick a door. The website is behind one of them.", a: [
+    ["Door 1", "Empty. It was always empty."],
+    ["Door 2", "Another door. Classic."],
+    ["Door 3", "A goat. The goat says you may proceed."]] },
+  { q: "A pigeon makes eye contact with you. What do you do?", a: [
+    ["Maintain eye contact", "Dominance established. The pigeon will remember this."],
+    ["Look away", "The pigeon has won. It always does."],
+    ["Offer it a job", "It accepted. It's our new head of security."]] },
+  { q: "Would you rather have fingers for teeth or teeth for fingers?", a: [
+    ["Fingers for teeth", "Every meal is now a handshake."],
+    ["Teeth for fingers", "Typing is now a dental procedure."],
+    ["Please stop", "We will not."]] }
+];
+
+function freshFrom(list, g, prefix){
+  const idx = list.map((_, i) => i).filter(i => !g.usedQ.has(prefix + i));
+  const i = idx.length ? pick(idx) : rand(list.length);
+  g.usedQ.add(prefix + i);
+  return list[i];
+}
+
+const C = {
+  robot(body, done){
+    head(body, "Verify you are human", "Standard procedure. This will only take a moment. Several moments.");
+    const msg = msgLine();
+    let tries = 0, busy = false;
+    const box = h("button", { class: "rc", "aria-label": "I'm not a robot" },
+      h("span", { class: "rc-box" }), h("span", { class: "rc-label" }, "I'm not a robot"),
+      h("span", { class: "rc-logo" }, h("b", {}, "🍝"), "slopCAPTCHA", h("br"), "Privacy · Terms"));
+    box.addEventListener("click", () => {
+      if (busy || box.classList.contains("ok")) return;
+      busy = true; box.classList.add("spin"); say(msg, "Checking…");
+      later(() => {
+        box.classList.remove("spin"); busy = false; tries++;
+        if (tries === 1) say(msg, "You clicked that in 0.31s. Robots are fast. Try again, slower.", "bad");
+        else if (tries === 2) say(msg, "Now you're hesitating. Robots hesitate when they're lying. Once more.", "bad");
+        else { box.classList.add("ok"); say(msg, "Fine. Human-ish. Barely.", "good"); later(done, 1100); }
+      }, 1100 + rand(700));
+    });
+    body.append(box, msg);
+  },
+
+  runaway(body, done){
+    head(body, "Click Continue", "That's it. Just click the button.");
+    const arena = h("div", { class: "arena" });
+    const msg = msgLine();
+    const max = 4 + rand(3);
+    let dodges = 0;
+    const lines = ["Nope.", "Too slow.", "Almost!", "You'll never catch me.", "Is this cardio?", "So close. Not really.", "Wheee."];
+    const btn = h("button", { class: "btn primary" }, "Continue →");
+    const dodge = () => {
+      dodges++;
+      const w = arena.clientWidth - btn.offsetWidth - 8, hgt = arena.clientHeight - btn.offsetHeight - 8;
+      btn.style.left = 4 + rand(Math.max(1, w)) + "px";
+      btn.style.top = 4 + rand(Math.max(1, hgt)) + "px";
+      if (dodges >= max){ btn.textContent = "ok I'm tired. click me"; say(msg, "The button has given up. Unlike you. Respect.", "good"); }
+      else say(msg, lines[dodges % lines.length]);
+    };
+    btn.addEventListener("pointerenter", e => { if (e.pointerType === "mouse" && dodges < max) dodge(); });
+    btn.addEventListener("click", () => { if (dodges < max) dodge(); else done(); });
+    arena.append(btn);
+    body.append(arena, msg);
+  },
+
+  grid(body, done){
+    const rounds = [
+      { ask: "slop", tiles: () => shuffle(["🍝","🥣","🤖","🗑️","🐸","🍲","📠","🫠","🧃"]),
+        fail: "You missed 3 squares. Or picked 2 extra. Hard to say. Everything was slop." },
+      { ask: "a bus", tiles: () => shuffle(["🦆","🌵","🧀","🪑","🐌","🎻","🧦","🍄","🪿"]),
+        fail: "There were no buses. You should have clicked Verify with nothing selected. Or should you? Again." },
+      { ask: "a traffic light", tiles: () => shuffle(["🚦","🚦","🚦","🚦","🍝","🚦","🚦","🚦","🚦"]),
+        fail: null }
+    ];
+    let r = 0;
+    head(body, "Image verification", "Select every square that matches. Our model will check your work. Our model is not sure either.");
+    const wrap = h("div");
+    const msg = msgLine();
+    body.append(wrap, msg);
+    const render = () => {
+      const R = rounds[r];
+      const tiles = R.tiles().map(e => h("button", { class: "tile", "aria-pressed": "false", onclick: ev => {
+        const t = ev.currentTarget; t.classList.toggle("sel"); t.setAttribute("aria-pressed", t.classList.contains("sel"));
+      } }, e));
+      wrap.replaceChildren(
+        h("div", { class: "cap-head" }, "Select all squares with", h("b", {}, R.ask), r === 0 ? "If there are none, click verify" : "Click verify once there are none left"),
+        h("div", { class: "tiles" }, tiles),
+        h("div", { class: "cap-foot" },
+          h("span", {}, h("button", { class: "tiny-link", style: "font-size:20px;text-decoration:none", "aria-label": "New challenge", onclick: () => say(msg, "New challenges are a privilege. You have not earned it.", "bad") }, "⟳"),
+                        " ", h("button", { class: "tiny-link", style: "font-size:20px;text-decoration:none", "aria-label": "Audio challenge", onclick: () => say(msg, "♪ (the sound of a dial-up modem screaming) ♪") }, "🎧")),
+          h("button", { class: "verify", onclick: verify }, "Verify")));
+    };
+    const verify = () => {
+      const R = rounds[r];
+      if (R.fail){ say(msg, R.fail, "bad"); shake(wrap); r++; later(render, 300); }
+      else { say(msg, "Close enough. Our model has accepted your answer out of exhaustion.", "good"); later(done, 1200); }
+    };
+    render();
+  },
+
+  free(body, done, alive, g){
+    const Q = freshFrom(FREE_Q, g, "f");
+    head(body, Q.q, Q.sub);
+    const msg = msgLine();
+    const input = h("input", { class: "input", type: "text", maxlength: "200", placeholder: "Type your answer…", autocomplete: "off", "aria-label": "Your answer" });
+    const go = h("button", { class: "btn primary" }, "Submit answer");
+    const form = h("form", { onsubmit: e => {
+      e.preventDefault();
+      const a = input.value.trim();
+      if (a.length < 1){ say(msg, "Silence is not an answer. Well, it is. Not here though.", "bad"); shake(input); return; }
+      input.disabled = true; go.disabled = true;
+      say(msg, "Analysing your answer on 4 rented GPUs…");
+      later(() => {
+        say(msg, Q.judge(a), "good");
+        form.querySelector(".actions").replaceChildren(continueBtn(done));
+        form.querySelector(".actions button").focus();
+      }, 1100 + rand(900));
+    } }, input, h("div", { class: "actions" }, go));
+    body.append(form, msg);
+  },
+
+  choice(body, done, alive, g){
+    const Q = freshFrom(MC_Q, g, "c");
+    head(body, Q.q, "Choose carefully. Your answer is permanent and will be read out at your funeral.");
+    const msg = msgLine();
+    const list = h("div", { class: "choices" });
+    const actions = h("div", { class: "actions" });
+    Q.a.forEach(([label, reply]) => list.append(h("button", { class: "choice", onclick: ev => {
+      if (list.classList.contains("done")) return;
+      list.classList.add("done"); ev.currentTarget.classList.add("picked");
+      say(msg, reply, "good");
+      actions.append(continueBtn(done));
+      actions.querySelector("button").focus();
+    } }, label)));
+    body.append(list, msg, actions);
+  },
+
+  hold(body, done, alive){
+    head(body, "Prove you have patience", "Press and hold the button for 3 seconds. Do not let go. We are watching.");
+    const fill = h("i");
+    const label = h("span", {}, "Press and hold");
+    const btn = h("button", { class: "hold" }, fill, label);
+    const msg = msgLine();
+    const DUR = 3000;
+    let t0 = 0, holding = false, betrayed = false, finished = false;
+    const tick = () => {
+      if (!holding || !alive()) return;
+      const p = Math.min(1, (performance.now() - t0) / DUR);
+      fill.style.width = p * 100 + "%";
+      label.textContent = p < .5 ? "Holding…" : p < .85 ? "Almost…" : "Almost… almost…";
+      if (!betrayed && p > .94){
+        betrayed = true; holding = false; fill.style.width = "0";
+        label.textContent = "Press and hold (again)";
+        say(msg, "Your finger slipped. (It didn't. We did that. Again please.)", "bad"); shake(btn);
+        return;
+      }
+      if (p >= 1){ holding = false; finished = true; label.textContent = "Patience: verified"; say(msg, "Incredible stamina. Truly.", "good"); later(done, 900); return; }
+      requestAnimationFrame(tick);
+    };
+    const start = () => { if (holding || finished) return; holding = true; t0 = performance.now(); say(msg, ""); requestAnimationFrame(tick); };
+    const end = () => {
+      if (!holding) return;
+      holding = false; fill.style.width = "0"; label.textContent = "Press and hold";
+      say(msg, pick(["Let go already? Weak.", "Commitment issues detected.", "From the top."]), "bad");
+    };
+    btn.addEventListener("pointerdown", e => { e.preventDefault(); start(); });
+    btn.addEventListener("pointerup", end);
+    btn.addEventListener("pointerleave", end);
+    btn.addEventListener("pointercancel", end);
+    btn.addEventListener("contextmenu", e => e.preventDefault());
+    btn.addEventListener("keydown", e => { if ((e.key === " " || e.key === "Enter") && !e.repeat){ e.preventDefault(); start(); } });
+    btn.addEventListener("keyup", e => { if (e.key === " " || e.key === "Enter") end(); });
+    body.append(btn, msg);
+  },
+
+  typeit(body, done){
+    const phrase = pick([
+      "i solemnly swear i am here for the slop",
+      "i have read and understood nothing",
+      "please let me see the website",
+      "i consent to being mildly inconvenienced",
+      "the slop is good and i am grateful"
+    ]);
+    head(body, "Type the phrase below", "Exactly. No pasting. We will know.");
+    const shown = h("div", { class: "phrase", "aria-label": phrase },
+      [...phrase].map(ch => h("span", { style: `transform:rotate(${(Math.random() - .5) * 18}deg) translateY(${(Math.random() - .5) * 6}px)` }, ch)));
+    const msg = msgLine();
+    const input = h("input", { class: "input", type: "text", autocomplete: "off", spellcheck: "false", placeholder: "Type it. Like, with your fingers.", "aria-label": "Type the phrase" });
+    input.addEventListener("paste", e => { e.preventDefault(); say(msg, "No pasting. We said we'd know. We knew.", "bad"); shake(input); });
+    input.addEventListener("drop", e => e.preventDefault());
+    const norm = s => s.toLowerCase().replace(/\s+/g, " ").trim();
+    let wrong = 0;
+    const form = h("form", { onsubmit: e => {
+      e.preventDefault();
+      if (norm(input.value) === phrase){ input.disabled = true; say(msg, "Typed by hand. Artisanal. Thank you.", "good"); later(done, 900); }
+      else { wrong++; shake(input); say(msg, wrong > 2 ? "Still wrong. Lowercase is fine, spaces are fine, the words are not." : "Typo detected. Our model is very disappointed in you, which is rich.", "bad"); }
+    } }, input, h("div", { class: "actions" }, h("button", { class: "btn primary" }, "Submit")));
+    body.append(shown, form, msg);
+  },
+
+  terms(body, done){
+    head(body, "Terms of Slop", "Please read the entire agreement. Scroll to the bottom to unlock the checkbox.");
+    const clauses = [
+      "By viewing this portfolio you agree that it is, in fact, a portfolio.",
+      "The Author (“me”) makes no warranty that any project will work, load, or be wanted.",
+      "You agree not to say “just use a template” within earshot of the Author.",
+      "Every project was made with love, caffeine and an unreasonable number of tokens.",
+      "Any resemblance to good software is purely coincidental.",
+      "You will not ask how long it took. It took four prompts. Don't ask.",
+      "The Indian Hate Index measures hate; it does not endorse it. Please do not email it.",
+      "Filth Manor's knives are not real knives. Please stop trying to hold them.",
+      "KármánNet is not a website. You have been warned. You will forget this warning.",
+      "cards- contains a LICENSE. That is the product. The product is complete.",
+      "You waive your right to be annoyed by the captchas you are about to keep doing.",
+      "Section 12 is intentionally left blank.",
+      "You agree that Section 12 was not blank.",
+      "The Author reserves the right to add more trials at any time, for fun.",
+      "You agree that ducks were mentioned and that you were fine with it.",
+      "Scrolling this far constitutes a binding emotional commitment.",
+      "If you have read this far, the Author is genuinely touched. Nobody reads these.",
+      "Your firstborn is not required. A star on GitHub would be nice though.",
+      "This agreement is governed by the laws of vibes.",
+      "You have reached the end. Go on. Tick the box. You know you want to."
+    ];
+    const box = h("div", { class: "terms", tabindex: "0", "aria-label": "Terms, scroll to the end" }, h("ol", {}, clauses.map(c => h("li", {}, c))));
+    const cb = h("input", { type: "checkbox", id: "tos", disabled: true });
+    const lab = h("label", { class: "check locked", for: "tos" }, cb, "I have read and agree to the Terms of Slop");
+    const go = h("button", { class: "btn primary", disabled: true }, "Accept & continue");
+    const msg = msgLine();
+    box.addEventListener("scroll", () => {
+      if (box.scrollTop + box.clientHeight >= box.scrollHeight - 6 && cb.disabled){
+        cb.disabled = false; lab.classList.remove("locked"); say(msg, "You actually scrolled. Wow. Okay.", "good");
+      }
+    });
+    lab.addEventListener("click", () => { if (cb.disabled) say(msg, "You haven't read it. Scroll. All of it.", "bad"); });
+    cb.addEventListener("change", () => { go.disabled = !cb.checked; });
+    go.addEventListener("click", done);
+    body.append(box, lab, h("div", { class: "actions" }, go), msg);
+  },
+
+  loading(body, done, alive){
+    head(body, "Verifying your vibes", "Please wait while we check that your vibes are compatible with the slop.");
+    const pct = h("div", { class: "pct" }, "0%");
+    const fill = h("i", { style: "width:0" });
+    const msg = msgLine();
+    const faster = h("button", { class: "btn small" }, "Make it go faster");
+    let p = 0, speed = 1.6, phase = 0, pressed = 0;
+    faster.addEventListener("click", () => {
+      pressed++; speed = Math.max(0.25, speed * 0.6);
+      say(msg, pressed === 1 ? "Making it go faster…" : pressed === 2 ? "Pressing it again makes it slower. Everyone knows that." : "You are actively making this worse.", "bad");
+    });
+    const id = every(() => {
+      if (!alive()) return stop(id);
+      if (phase === 0){ p = Math.min(99, p + speed * (1 + Math.random())); if (p >= 99){ phase = 1; say(msg, "Almost there…"); later(() => { phase = 2; p = 37; say(msg, "Vibe discrepancy detected. Re-checking your vibes from 37%.", "bad"); }, 1300); } }
+      else if (phase === 2){ p = Math.min(100, p + speed * (1.5 + Math.random())); if (p >= 100){ phase = 3; stop(id); faster.disabled = true; say(msg, "Vibes: immaculate. Probably.", "good"); later(done, 900); } }
+      pct.textContent = Math.floor(p) + "%";
+      fill.style.width = p + "%";
+    }, 60);
+    body.append(pct, h("div", { class: "bar big-bar" }, fill), msg, h("div", { class: "actions" }, faster));
+  },
+
+  math(body, done){
+    const a = 2 + rand(7), b = 2 + rand(7);
+    const wrongAns = a + b + 1;
+    head(body, `What is ${a} + ${b}?`, "A simple arithmetic check. Nothing weird is going to happen.");
+    const msg = msgLine();
+    const input = h("input", { class: "input", type: "text", inputmode: "numeric", autocomplete: "off", placeholder: "Your answer", "aria-label": "Your answer" });
+    let step = 0;
+    const form = h("form", { onsubmit: e => {
+      e.preventDefault();
+      const v = parseInt(input.value, 10);
+      if (step === 0){
+        if (v === a + b){ step = 1; input.value = ""; say(msg, `Correct! However, our model is very confident the answer is ${wrongAns}. Please enter ${wrongAns} to continue.`, "bad"); }
+        else { shake(input); say(msg, "Wrong. Even we got that one, and we're slop.", "bad"); }
+      } else {
+        if (v === wrongAns){ input.disabled = true; say(msg, "Thank you for your compliance. Maths has been updated.", "good"); later(done, 1000); }
+        else if (v === a + b){ shake(input); say(msg, `We know it's ${a + b}. We need you to say ${wrongAns}.`, "bad"); }
+        else { shake(input); say(msg, `Not that either. ${wrongAns}. Type ${wrongAns}.`, "bad"); }
+      }
+    } }, input, h("div", { class: "actions" }, h("button", { class: "btn primary" }, "Submit")));
+    body.append(form, msg);
+  },
+
+  rate(body, done, alive){
+    head(body, "Rate this portfolio", "Your honest feedback helps us improve. It will not be used for that.");
+    const out = h("div", { class: "rating" }, "5/10");
+    const range = h("input", { type: "range", min: "1", max: "10", step: "1", value: "5", "aria-label": "Rating" });
+    const msg = msgLine();
+    const go = h("button", { class: "btn primary", disabled: true }, "Submit rating");
+    const lines = ["That seems low. Adjusting…", "Did you mean 10?", "Your rating has been corrected for bias.", "Autocorrect: enabled.", "We'll just fix that for you."];
+    let creep = null, wait = null, n = 0;
+    const show = () => { out.textContent = range.value + "/10"; go.disabled = range.value !== "10"; };
+    range.addEventListener("input", () => {
+      show();
+      if (creep){ stop(creep); creep = null; }
+      if (wait){ stop(wait); wait = null; }
+      if (range.value === "10"){ say(msg, "Now that's the spirit.", "good"); return; }
+      wait = later(() => {
+        wait = null;
+        if (!alive()) return;
+        say(msg, lines[n++ % lines.length], "bad");
+        creep = every(() => {
+          if (+range.value >= 10){ stop(creep); creep = null; return; }
+          range.value = +range.value + 1; show();
+        }, 140);
+      }, 500);
+    });
+    go.addEventListener("click", () => { go.disabled = true; say(msg, "Thank you for your 10/10 review. It has been posted under your name.", "good"); later(done, 1100); });
+    body.append(out, range, h("div", { class: "actions" }, go), msg);
+  },
+
+  cookies(body, done){
+    head(body, "We value your privacy 🍪", "This page uses cookies to improve your experience and ruin your afternoon.");
+    const msg = msgLine();
+    const area = h("div");
+    const manage = () => {
+      const names = ["Strictly necessary cookies", "Slightly necessary cookies", "Emotional support cookies", "Cookies that track your vibes",
+                     "Third-party fourth-party cookies", "Cookies that track the other cookies", "Chocolate chip (non-negotiable)", "Legitimate interest in your soul"];
+      area.replaceChildren(
+        ...names.map(nm => h("div", { class: "cookie-row" }, h("span", {}, nm),
+          h("button", { class: "toggle", role: "switch", "aria-checked": "true", "aria-label": nm, onclick: ev => {
+            shake(ev.currentTarget); say(msg, pick(["This cookie is load-bearing.", "That one holds the site up.", "Turning that off voids the warranty.", "Nice try."]), "bad");
+          } }))),
+        h("div", { class: "actions" }, h("button", { class: "btn primary", onclick: () => { say(msg, "Preferences saved. They're all on. They were always on.", "good"); later(done, 1300); } }, "Save preferences")),
+        h("p", { class: "fineprint" }, "(There are no cookies. There isn't even a server. We just like the ritual.)"));
+    };
+    area.append(h("div", { class: "actions" },
+      h("button", { class: "btn primary", onclick: () => { say(msg, "Great. We also accepted the ones you didn't see.", "good"); later(done, 1100); } }, "Accept all cookies"),
+      h("button", { class: "tiny-link", onclick: manage }, "manage preferences")));
+    body.append(area, msg);
+  },
+
+  realbtn(body, done){
+    head(body, "Click the real Continue button", "The others are decoys. Read carefully, like you never do with Terms.");
+    const msg = msgLine();
+    const grid = h("div", { class: "decoys" });
+    const fakes = ["Contiune", "C0ntinue", "Cont1nue", "Continu", "Cnotinue", "Continue?", "CONTINUE", "Contínue", "Continue.", "Continuе"];
+    let misses = 0;
+    const render = () => {
+      const labels = shuffle([...shuffle(fakes.slice()).slice(0, 7), "Continue"]);
+      grid.replaceChildren(...labels.map(l => h("button", { class: "btn", onclick: () => {
+        if (l === "Continue"){ say(msg, "Correct. You can read. Rare these days.", "good"); later(done, 800); }
+        else { misses++; say(msg, misses > 2 ? `“${l}”. Look at it. Really look at it.` : "That one was a decoy. Shuffling.", "bad"); render(); }
+      } }, l)));
+    };
+    render();
+    body.append(grid, msg);
+  },
+
+  blink(body, done){
+    head(body, "Blink twice if you're being held here against your will", "This is a safe space. Kind of.");
+    const msg = msgLine();
+    let n = 0;
+    const b = h("button", { class: "btn primary" }, "*blinks*");
+    b.addEventListener("click", () => {
+      n++;
+      if (n === 1) say(msg, "One blink. Go on…");
+      else if (n === 2){ b.disabled = true; say(msg, "We saw that. Help is not coming. Please continue.", "bad"); later(done, 1500); }
+    });
+    body.append(h("div", { class: "actions" }, b), msg);
+  },
+
+  captcha(body, done){
+    head(body, "Type the characters you see", "Not case sensitive. Barely legible. Industry standard.");
+    const cv = h("canvas", { width: "280", height: "90", role: "img", "aria-label": "Distorted text" });
+    const msg = msgLine();
+    const input = h("input", { class: "input", type: "text", autocomplete: "off", spellcheck: "false", placeholder: "Characters", "aria-label": "Characters in the image" });
+    let text = "", level = 1, tries = 0;
+    const draw = () => {
+      const ab = "ACDEFHJKLMNPRTUVWXY34679";
+      text = Array.from({ length: 5 + (level > 1 ? 1 : 0) }, () => ab[rand(ab.length)]).join("");
+      cv.setAttribute("aria-label", "Distorted text: " + text.split("").join(" "));
+      const c = cv.getContext("2d");
+      c.fillStyle = "#efe9da"; c.fillRect(0, 0, 280, 90);
+      for (let i = 0; i < 160 * level; i++){ c.fillStyle = `hsla(${rand(360)},60%,40%,.35)`; c.fillRect(rand(280), rand(90), 2, 2); }
+      text.split("").forEach((ch, i) => {
+        c.save();
+        c.translate(28 + i * 40 + rand(6), 58 + rand(12) - 6);
+        c.rotate((Math.random() - .5) * .5 * level);
+        c.font = `${700} ${30 + rand(10)}px ${pick(["Georgia, serif", "Courier New, monospace", "Impact, sans-serif"])}`;
+        c.fillStyle = `hsl(${rand(360)},55%,${20 + rand(15)}%)`;
+        c.fillText(ch, 0, 0);
+        c.restore();
+      });
+      for (let i = 0; i < 3 * level; i++){
+        c.strokeStyle = `hsla(${rand(360)},50%,30%,.7)`; c.lineWidth = 1 + rand(2); c.beginPath();
+        c.moveTo(0, rand(90)); c.bezierCurveTo(rand(280), rand(90), rand(280), rand(90), 280, rand(90)); c.stroke();
+      }
+    };
+    const form = h("form", { onsubmit: e => {
+      e.preventDefault();
+      tries++;
+      const v = input.value.replace(/\s/g, "").toUpperCase();
+      if (tries === 1){ level = 2; draw(); input.value = ""; shake(input); say(msg, "Incorrect. (It was correct. That was the easy one. Here's the real one.)", "bad"); return; }
+      if (v === text){ input.disabled = true; say(msg, "Correct! Your eyes are now legally certified.", "good"); later(done, 900); return; }
+      if (tries >= 4){ input.disabled = true; say(msg, "We can't read it either. You win by forfeit.", "good"); later(done, 1100); return; }
+      draw(); input.value = ""; shake(input); say(msg, "Incorrect. Fresh one coming up.", "bad");
+    } }, input, h("div", { class: "actions" }, h("button", { class: "btn primary" }, "Verify")));
+    const refresh = h("button", { class: "btn small", type: "button", onclick: () => { draw(); say(msg, "Refreshed. It's not better, is it."); } }, "⟳ new one");
+    const audio = h("button", { class: "btn small", type: "button", onclick: () => say(msg, "♪ “" + text.split("").map(ch => pick(["mmh", "bzzt", ch, "eh?", "…"])).join(" ") + "” ♪") }, "🔊 audio");
+    body.append(h("div", { class: "captcha" }, cv, h("div", { style: "display:flex;gap:6px;flex-direction:column" }, refresh, audio)), form, msg);
+    draw();
+  },
+
+  lie(body, done){
+    head(body, "Are you a robot?", "Answer honestly. Robots are not allowed to lie, so this is airtight.");
+    const msg = msgLine();
+    const actions = h("div", { class: "actions" });
+    let step = 0;
+    const yes = h("button", { class: "btn", onclick: () => { say(msg, "Thank you for your honesty. Robots are welcome too, apparently. Proceed.", "good"); actions.replaceChildren(continueBtn(done)); } }, "Yes");
+    const no = h("button", { class: "btn", onclick: () => {
+      step++;
+      if (step === 1) say(msg, "That's exactly what a robot would say.", "bad");
+      else if (step === 2) say(msg, "A human would have said that once and moved on.", "bad");
+      else { say(msg, "Persistent. Stubborn. Irrational. Very human. Proceed.", "good"); actions.replaceChildren(continueBtn(done)); }
+    } }, "No");
+    actions.append(yes, no);
+    body.append(actions, msg);
+  }
+};
+
+/* ---------- the end ---------- */
+function finalBoss(alive){
+  const g = G, p = g.p;
+  setMeter(0.97, "Final check");
+  const body = h("div", { class: "trial" });
+  stage.append(h("p", { class: "kicker" }, "Final check · we promise"), body);
+  head(body, `Are you absolutely sure you want to see ${p.name}?`, "Once seen, slop cannot be unseen. Last chance to reconsider your choices.");
+  const msg = msgLine();
+  const actions = h("div", { class: "actions" });
+  let backs = 0;
+  const back = h("button", { class: "btn", onclick: () => {
+    backs++;
+    say(msg, backs === 1 ? "There is no going back. There is only slop." : "Stop pressing that. It's decorative.", "bad");
+    if (backs > 1) back.remove();
+  } }, "Take me back");
+  actions.append(
+    h("button", { class: "btn primary", onclick: () => countdown(alive) }, "Yes"),
+    h("button", { class: "btn primary", onclick: () => countdown(alive) }, "YES (louder)"),
+    back);
+  body.append(actions, msg);
+}
+
+function countdown(){
+  const alive = newStage();
+  const lines = ["Preparing slop…", "Warming up the slop…", "Plating…"];
+  const num = h("div", { class: "countdown" }, "3");
+  const line = h("p", { class: "sub", style: "text-align:center" }, lines[0]);
+  stage.append(h("div", { class: "trial" }, num, line));
+  setMeter(0.99, "99%… 99%… 99%…");
+  let n = 3;
+  const id = every(() => {
+    if (!alive()) return stop(id);
+    n--;
+    if (n > 0){ num.textContent = n; line.textContent = lines[3 - n]; }
+    else { stop(id); reveal(); }
+  }, 850);
+}
+
+function reveal(){
+  newStage();
+  const g = G, p = g.p;
+  const wasted = Date.now() - g.start;
+  setMeter(1, "Access granted");
+  slop(12, `unlocked ${p.name}`);
+  document.getElementById("card-" + p.id)?.classList.add("unlocked");
+  const pic = p.img
+    ? h("img", { src: p.img, alt: `Screenshot of ${p.name}` })
+    : h("div", { class: "ph", style: "background:var(--grape);color:var(--cream);display:grid;place-items:center;font:400 40px/1 var(--display)" }, p.preview === "license" ? "📄 LICENSE" : p.preview === "mirror" ? "🪞" : "⏳");
+  const open = h("a", { class: "btn primary", href: p.url, target: p.self ? null : "_blank", rel: "noopener" }, p.self ? "Return to this exact page ↺" : `Open ${p.name} ↗`);
+  if (p.self) open.addEventListener("click", e => { e.preventDefault(); closeGate(); window.scrollTo({ top: 0 }); toast("Welcome back to where you already were."); });
+  stage.append(h("div", { class: "trial reveal" },
+    h("span", { class: "granted" }, "ACCESS GRANTED"),
+    pic,
+    h("h3", {}, p.name),
+    h("p", { class: "sub" }, p.verdict),
+    h("div", { class: "actions" }, open,
+      p.self ? null : h("a", { class: "btn", href: `https://github.com/${p.repo}`, target: "_blank", rel: "noopener" }, "Source ↗"),
+      h("button", { class: "btn", onclick: closeGate }, "Back to the slop")),
+    h("div", { class: "receipt" },
+      h("div", {}, h("span", {}, "Trials survived"), h("b", {}, String(g.seq.length + 1))),
+      h("div", {}, h("span", {}, "Time spent getting here"), h("b", {}, fmtTime(wasted))),
+      h("div", {}, h("span", {}, "Time it would take to just find the link"), h("b", {}, "0.4s")),
+      h("div", {}, h("span", {}, "Clearance valid until"), h("b", {}, "you refresh")))));
+}
+
+/* ---------- slop meter wiring ---------- */
+(function wireSlop(){
+  const m = $("#slopmeter");
+  if (typeof m.showPopover === "function"){ try { m.showPopover(); } catch (e) {} }
+  else m.removeAttribute("popover");
+  renderSlop(0);
+
+  const taps = ["Do not tap the glass.", "Calibrated by vibes. Accurate to ±100%.", "Slop is measured in SLU (Slop Load Units).",
+                "The meter cannot go down. It can only vent.", "Please stop shaking the slop.", "It's not a bug, it's a reading."];
+  let ti = 0;
+  const tap = () => {
+    m.classList.remove("tapped"); void m.offsetWidth; m.classList.add("tapped");
+    toast(taps[ti++ % taps.length]);
+    slop(1, "tapped the glass");
+  };
+  m.addEventListener("click", tap);
+  m.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " "){ e.preventDefault(); tap(); } });
+
+  // slow drip just for being here
+  setInterval(() => { if (!document.hidden) slop(0.15); }, 1000);
+
+  // scrolling deeper = more slop
+  let ticking = false, pendingScroll = 0;
+  addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      if (max <= 0 || scrollY <= SLOP.maxScroll) return;
+      pendingScroll += (scrollY - SLOP.maxScroll) / max * 22;
+      SLOP.maxScroll = scrollY;
+      if (pendingScroll >= 1){ slop(pendingScroll, "scrolled deeper into the slop"); pendingScroll = 0; }
+    });
+  }, { passive: true });
+
+  // every click is a little bit of slop
+  document.addEventListener("click", e => {
+    if (e.target.closest("#slopmeter")) return;
+    if (e.target.closest("button, a")) slop(0.6, "clicked a thing");
+  }, true);
+
+  // sparkle trail
+  if (!reduceMotion){
+    const cols = ["var(--pink)", "var(--yellow)", "var(--cyan)", "var(--lime)", "var(--lav)", "var(--orange)"];
+    const glyphs = ["✦", "✧", "★", "✺", "✦", "🍝"];
+    let last = 0, live = 0;
+    addEventListener("pointermove", e => {
+      if (e.pointerType !== "mouse" || gate.open) return;
+      const now = performance.now();
+      if (now - last < 40 || live > 28) return;
+      last = now; live++;
+      const s = document.createElement("span");
+      s.className = "spark";
+      s.textContent = glyphs[rand(glyphs.length)];
+      s.style.left = e.clientX + "px";
+      s.style.top = e.clientY + "px";
+      s.style.color = cols[rand(cols.length)];
+      s.style.setProperty("--dx", (Math.random() - .5) * 40 + "px");
+      document.body.append(s);
+      setTimeout(() => { s.remove(); live--; }, 800);
+    }, { passive: true });
+  }
+})();
+</script>
+</body>
+</html>
