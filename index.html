@@ -23,7 +23,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
-body{margin:0;background:var(--grape);color:var(--cream);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--grape);color:var(--cream);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit}
 button{font:inherit;color:inherit;cursor:pointer}
 img{max-width:100%;display:block}
@@ -373,6 +373,65 @@ dialog .toasts{position:absolute;top:auto;bottom:16px}
 .toast{background:var(--yellow);color:var(--ink);border:var(--bd);font:700 13px/1.45 var(--mono);padding:12px 14px;border-radius:14px;box-shadow:4px 4px 0 var(--ink);animation:toast .3s cubic-bezier(.3,1.6,.5,1)}
 @keyframes toast{from{transform:translateY(-12px) scale(.9);opacity:0}}
 
+
+/* ---------- banger, ads, drops, lab ---------- */
+.banger{display:block;width:fit-content;max-width:640px;margin:28px 0 0;background:var(--cream);color:var(--ink);border:var(--bd);border-radius:16px;padding:12px 16px;font:700 16px/1.35 var(--sans);box-shadow:4px 4px 0 var(--pink);transform:rotate(-1deg);transition:opacity .3s, transform .3s}
+.banger::before{content:"🔊 BANGER SLOP LINE";display:block;font:700 10px/1 var(--mono);letter-spacing:.12em;opacity:.55;margin-bottom:6px}
+.banger.swap{opacity:0;transform:rotate(-1deg) translateY(8px)}
+.adslot{--adc:var(--yellow);position:relative;margin:-60px 0 110px;border:var(--bd);border-radius:18px;overflow:hidden;box-shadow:6px 6px 0 var(--ink);color:var(--ink);min-height:118px;display:flex;align-items:center;gap:18px;padding:20px 24px;background-color:var(--adc);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.28) 0 14px,transparent 14px 28px);transition:background-color .5s;animation:adglow 2s ease-in-out infinite}
+@keyframes adglow{50%{box-shadow:6px 6px 0 var(--ink),0 0 0 6px rgba(255,255,255,.18)}}
+.adslot .tag{position:absolute;top:0;right:0;background:var(--ink);color:var(--cream);font:700 9px/1 var(--mono);letter-spacing:.14em;padding:6px 9px;border-bottom-left-radius:10px}
+.adslot .em{font-size:56px;line-height:1;flex:none;animation:bob 1.6s ease-in-out infinite}
+.adslot h4{margin:0;font:400 clamp(22px,3.2vw,34px)/1.05 var(--display)}
+.adslot p{margin:6px 0 0;font-weight:600;font-size:14px}
+.adslot .btn{margin-left:auto;flex:none}
+@media (max-width:640px){ .adslot{flex-wrap:wrap;padding:20px 18px} .adslot .btn{margin-left:0} .adslot .em{font-size:40px} }
+.flash{display:inline-block;background:var(--red);color:var(--cream);font:700 11px/1 var(--mono);padding:4px 6px;border-radius:5px;border:2px solid var(--ink);margin-right:10px;vertical-align:middle;animation:flash .6s steps(2) infinite}
+@keyframes flash{50%{background:var(--ink);color:var(--yellow)}}
+.popad{position:fixed;left:16px;bottom:16px;z-index:45;width:min(320px,100vw - 32px);background:var(--cream);color:var(--ink);border:var(--bd);border-radius:18px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;animation:adin .55s cubic-bezier(.3,1.6,.5,1)}
+@keyframes adin{from{transform:translateY(130%) rotate(-8deg)}}
+.popad.nudge{animation:shake .4s}
+.popad.bye{animation:adout .38s ease-in forwards}
+@keyframes adout{to{transform:translateY(140%) rotate(10deg)}}
+.popad .bar-top{display:flex;align-items:center;justify-content:space-between;padding:6px 8px 6px 12px;background:repeating-linear-gradient(-45deg,var(--pink) 0 10px,#e0258a 10px 20px);border-bottom:var(--bd);font:700 10px/1 var(--mono);letter-spacing:.12em;color:var(--cream)}
+.popad .close{width:16px;height:16px;border-radius:4px;border:2px solid var(--ink);background:var(--cream);color:var(--ink);font:700 10px/1 var(--mono);display:grid;place-items:center;padding:0}
+.popad .in{padding:14px 16px 16px;display:grid;gap:8px;justify-items:start}
+.popad .em{font-size:40px;line-height:1}
+.popad h4{margin:0;font:400 22px/1.05 var(--display)}
+.popad p{margin:0;font-size:13.5px;font-weight:500}
+@media (max-width:640px){ .popad{width:calc(100vw - 150px);left:12px;bottom:12px} .popad .in{padding:10px 12px 12px;gap:6px} .popad .em{font-size:28px} .popad h4{font-size:17px} .popad p{font-size:12px} }
+.drop{position:fixed;z-index:44;max-width:300px;background:var(--c,var(--yellow));color:var(--ink);border:var(--bd);border-radius:20px 20px 20px 4px;padding:12px 15px;font:700 16px/1.35 var(--sans);box-shadow:5px 5px 0 var(--ink);cursor:pointer;transform:rotate(var(--rot,-2deg));animation:dropin .5s cubic-bezier(.3,1.7,.5,1);transition:transform .3s, opacity .3s}
+.drop small{display:block;font:700 10px/1 var(--mono);letter-spacing:.1em;opacity:.6;margin-bottom:6px;text-transform:uppercase}
+.drop.bye{transform:scale(.5) rotate(-12deg);opacity:0}
+@keyframes dropin{from{transform:scale(.2) rotate(24deg);opacity:0}}
+@media (max-width:640px){ .drop{left:12px!important;right:12px;max-width:none} }
+#lab .sec-head h2{text-shadow:4px 4px 0 var(--ink),8px 8px 0 var(--pink)}
+.lab{display:grid;grid-template-columns:1.35fr 1fr;gap:28px}
+@media (max-width:900px){ .lab{grid-template-columns:1fr} }
+.machine{background:var(--cream);color:var(--ink);border:var(--bd);border-radius:var(--r);box-shadow:8px 8px 0 var(--ink);padding:22px;transform:rotate(-.5deg)}
+.machine-head{display:flex;justify-content:space-between;align-items:center;font:700 12px/1 var(--mono);letter-spacing:.1em;margin-bottom:14px}
+.lights{display:flex;gap:6px}
+.lights i{width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);background:var(--pink);animation:flash .5s steps(2) infinite}
+.lights i:nth-child(2){background:var(--yellow);animation-delay:.15s}
+.lights i:nth-child(3){background:var(--lime);animation-delay:.3s}
+.screen{background:var(--ink);color:var(--lime);border-radius:14px;padding:20px;min-height:228px;border:var(--bd);box-shadow:inset 0 0 40px rgba(184,255,61,.14);font:700 13px/1.5 var(--mono)}
+.screen .nm{display:block;font:400 clamp(32px,4.5vw,50px)/1 var(--display);color:var(--yellow);margin-bottom:10px}
+.screen .line{display:block;color:var(--cream);font:600 19px/1.4 var(--sans);margin-bottom:16px}
+.screen .meta{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0}
+.screen .meta dt{opacity:.6}
+.screen .meta dd{margin:0}
+.screen.rolling{filter:blur(1.5px) saturate(1.6)}
+.lever-note{font:700 11px/1.45 var(--mono);opacity:.6;margin:14px 0 0}
+.lines{background:var(--lav);color:var(--ink);border:var(--bd);border-radius:var(--r);box-shadow:8px 8px 0 var(--ink);padding:22px;display:flex;flex-direction:column;gap:16px;transform:rotate(.6deg)}
+.lines h3{margin:0;font:400 30px/1 var(--display)}
+.lines blockquote{margin:0;background:var(--cream);border:var(--bd);border-radius:16px;padding:16px 18px;font:800 21px/1.3 var(--sans);box-shadow:4px 4px 0 var(--ink);min-height:120px;display:flex;align-items:center}
+.lines blockquote.pop{animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+.sm-poke{position:absolute;top:-13px;right:14px;background:var(--red);color:var(--cream);border:2px solid var(--ink);border-radius:999px;font:700 10px/1 var(--mono);padding:4px 8px;display:none;transform:rotate(4deg)}
+.sm-poke.on{display:block}
+.reaction{position:absolute;left:-22px;top:-34px;font-size:44px;pointer-events:none;animation:react 1.1s ease-out forwards}
+@keyframes react{0%{transform:scale(.3) rotate(-20deg);opacity:0}25%{transform:scale(1.2) rotate(8deg);opacity:1}100%{transform:translateY(-40px) scale(1);opacity:0}}
+body.cringe nav, body.cringe header, body.cringe .wrap, body.cringe .tape{animation:shake .45s}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
@@ -388,6 +447,7 @@ dialog .toasts{position:absolute;top:auto;bottom:16px}
     <div class="links">
       <a href="#work">Work</a>
       <a href="#stack">Stack</a>
+      <a href="#lab">Lab</a>
       <a href="#praise">Praise</a>
       <button class="btn small hot" id="hire">Hire me</button>
     </div>
@@ -408,16 +468,19 @@ dialog .toasts{position:absolute;top:auto;bottom:16px}
     <a class="btn primary" href="#work">See the slop ↓</a>
     <a class="btn" href="https://github.com/FilthyL" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
+  <p class="banger" id="banger" aria-live="polite"></p>
   <p class="fineprint">* Every project link is protected by slopCAPTCHA™, industry-leading verification that you are human, patient and willing to answer questions about ducks.</p>
 </header>
 
 <div class="wrap">
   <div class="stats">
-    <div><b>5</b><span>projects shipped</span></div>
+    <div><b>3</b><span>projects shipped (one is a LICENSE)</span></div>
     <div><b>1</b><span>repo that is only a LICENSE</span></div>
     <div><b>156</b><span>subreddits watched by a cron job</span></div>
     <div><b>3</b><span>knives held by rigged 3D hands</span></div>
   </div>
+
+  <div class="adslot" data-ad></div>
 
   <section id="work">
     <div class="sec-head">
@@ -435,9 +498,35 @@ dialog .toasts{position:absolute;top:auto;bottom:16px}
     <div class="skills" id="skills"></div>
   </section>
 
+  <section id="lab">
+    <div class="sec-head">
+      <div><span class="num">03 / SLOP LAB</span><h2>Make your own slop</h2></div>
+      <p>Out of ideas? Pull the lever. Every idea is original*, buildable in a single prompt and wanted by nobody. <span class="mono" style="font-size:11px;opacity:.7">*not guaranteed</span></p>
+    </div>
+    <div class="lab">
+      <div class="machine">
+        <div class="machine-head"><span>🎰 SLOP IDEA GENERATOR 3000</span><span class="lights"><i></i><i></i><i></i></span></div>
+        <div class="screen" id="idea" aria-live="polite"></div>
+        <div class="actions">
+          <button class="btn primary" id="ideaGo">🎰 Generate slop idea</button>
+          <button class="btn" id="ideaCopy">📋 Copy as prompt</button>
+        </div>
+        <p class="lever-note">Paste the prompt into any AI and you'll have a new portfolio piece in about 4 minutes.</p>
+      </div>
+      <div class="lines">
+        <h3>Banger line dispenser</h3>
+        <blockquote id="bangerOut"></blockquote>
+        <div class="actions" style="margin-top:0"><button class="btn hot" id="bangerGo">💥 Hit me</button></div>
+        <p class="lever-note">Certified bangers. Put one in your bio and watch recruiters back away slowly.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="adslot" data-ad></div>
+
   <section id="praise">
     <div class="sec-head">
-      <div><span class="num">03 / KIND WORDS</span><h2>Praise</h2></div>
+      <div><span class="num">04 / KIND WORDS</span><h2>Praise</h2></div>
       <p>Unsolicited, unverified and in one case written by a GitHub Actions runner.</p>
     </div>
     <div class="quotes" id="quotes"></div>
@@ -453,6 +542,7 @@ dialog .toasts{position:absolute;top:auto;bottom:16px}
 
 <aside id="slopmeter" popover="manual" tabindex="0" role="button" aria-label="Slop meter">
   <div class="tube" aria-hidden="true"><div class="goo" id="goo"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span></div><div class="ticks"></div></div>
+  <span class="sm-poke" id="smPoke" aria-hidden="true"></span>
   <div class="sm-read">
     <span class="sm-title">Slop-o-meter</span>
     <span class="sm-pct" id="smPct" aria-live="polite">0%</span>
@@ -493,44 +583,25 @@ const PROJECTS = [
   {
     id: "hateindex", name: "Indian Hate Index", repo: "FilthyL/hateindex",
     url: "https://filthyl.github.io/hateindex/", img: "assets/shots/hateindex.png",
-    span: "", trials: 8, color: "var(--cyan)", slop: 74, slopNote: "hourly slop",
+    span: "wide", trials: 8, color: "var(--cyan)", slop: 74, slopNote: "hourly slop",
     blurb: "A world map of explicit online hostility toward Indians, by country: where it comes from, what drives it, and which stereotypes keep coming up. Public posts, news and blogs, run through a transparent rule-based classifier and rebuilt every hour.",
     tags: ["Python", "D3 map", "Rule-based NLP", "GitHub Actions cron", "13 sources"],
     caption: "updated hourly at :23, because :00 is for amateurs",
     verdict: "You have been vetted more thoroughly than the data. Respect."
   },
   {
-    id: "karmannet", name: "KármánNet", repo: "FilthyL/karmannet",
-    url: "https://github.com/FilthyL/karmannet", img: "assets/shots/karmannet.png",
-    span: "", trials: 7, color: "var(--orange)", slop: 61, slopNote: "too much real maths",
-    blurb: "A physics-informed neural network that rebuilds the Kármán vortex street behind a cylinder at Re = 100 and works out the Navier–Stokes coefficients by itself. NVIDIA Warp GPU kernels, with a clean PyTorch fallback.",
-    tags: ["PyTorch", "PINN", "NVIDIA Warp", "Navier–Stokes", "Colab"],
-    caption: "Re = 100. The blur is physics, not the lock.",
-    verdict: "This is not a website. It is a repository. You did all of that for a repository."
-  },
-  {
     id: "cards", name: "cards-", repo: "FilthyL/cards-",
     url: "https://github.com/FilthyL/cards-", img: null, preview: "license",
-    span: "third", trials: 9, color: "var(--yellow)", slop: 100, slopNote: "pure concentrate",
+    span: "", trials: 9, color: "var(--yellow)", slop: 100, slopNote: "pure concentrate",
     blurb: "The leanest project in the collection. Zero bugs, zero tech debt, zero dependencies, zero code. One LICENSE file. Fully open source.",
     tags: ["MIT-ish", "0 LOC", "Vaporware", "Visionary"],
     caption: "the trailing dash is load-bearing",
     verdict: "You passed the hardest gauntlet on this page to see a LICENSE file. Legendary behaviour."
   },
   {
-    id: "portslopio", name: "portslopio", repo: "FilthyL/portslopio",
-    url: "./", img: null, preview: "mirror",
-    span: "third", trials: 5, color: "var(--lime)", slop: 110, slopNote: "overflowing",
-    blurb: "This page. A portfolio that resents you for visiting. Hand-built from artisanal, locally sourced prompts.",
-    tags: ["HTML", "Spite", "<dialog>"],
-    caption: "you are here",
-    verdict: "You are already here. Congratulations on the round trip.",
-    self: true
-  },
-  {
     id: "next", name: "The next one", repo: "FilthyL/???",
     url: "https://github.com/FilthyL?tab=repositories", img: null, preview: "soon",
-    span: "third", trials: 6, color: "var(--lav)", slop: null, slopNote: "calculating",
+    span: "", trials: 6, color: "var(--lav)", slop: null, slopNote: "calculating",
     blurb: "Currently in a chat window somewhere, being told to ‘make it better’ for the ninth time. Will ship before you finish reading this sentence.",
     tags: ["Prompt in progress", "TBD", "Probably a map"],
     caption: "ETA: one more prompt",
@@ -546,7 +617,7 @@ const SKILLS = [
   ["Writing LICENSE files", "100% · it's the main output", 100, ""],
   ["Reading the diff before merging", "12%", 12, "pink"],
   ["Centering a div", "delegated", 100, "warn"],
-  ["Explaining what a PINN is at parties", "3 people have left", 38, "pink"]
+  ["Explaining slop at parties", "3 people have left", 38, "pink"]
 ];
 
 const QUOTES = [
@@ -554,14 +625,14 @@ const QUOTES = [
   ["I wanted a to-do app. Now I own a house with a basement full of knives.", "— a client, probably", 5],
   ["This repository contains only a LICENSE.", "— GitHub, about cards-", 5],
   ["Ran hourly at :23. Never complained. Nobody asked how I was.", "— the cron job", 3],
-  ["Converged. Mostly. λ₂ = 0.0101. Close enough.", "— the neural network", 4],
+  ["I closed 14 pop-up ads to look at a LICENSE file. 10/10, would close again.", "— a visitor, again", 5],
   ["Why did I have to pick traffic lights to see a JSON file?", "— a visitor", 1]
 ];
 
 const MARQUEE = [
   "Now 40% more slop", "Hand-prompted in small batches", "No humans were consulted",
   "Ships faster than you can review", "Certified fresh by a cron job", "Free-range tokens",
-  "Turn back while you still can", "slopCAPTCHA™ protected", "Zero cookies (we checked)"
+  "Turn back while you still can", "slopCAPTCHA™ protected", "Zero cookies (we checked)", "Ship first, understand never", "If it compiles, it ships"
 ];
 
 /* ============================================================
@@ -595,6 +666,7 @@ function clearTimers(){ timers.forEach(id => { clearTimeout(id); clearInterval(i
 function toast(msg, ms = 3400){
   const box = gate.open ? $("#gateToasts") : $("#toasts");
   const t = h("div", { class: "toast", role: "status" }, msg);
+  while (box.children.length >= 2) box.firstElementChild.remove();
   box.append(t);
   setTimeout(() => t.remove(), ms);
 }
@@ -1126,7 +1198,7 @@ const C = {
       "You will not ask how long it took. It took four prompts. Don't ask.",
       "The Indian Hate Index measures hate; it does not endorse it. Please do not email it.",
       "Filth Manor's knives are not real knives. Please stop trying to hold them.",
-      "KármánNet is not a website. You have been warned. You will forget this warning.",
+      "The ads on this page are real ads, for nothing. Please do not click them. (Click them.)",
       "cards- contains a LICENSE. That is the product. The product is complete.",
       "You waive your right to be annoyed by the captchas you are about to keep doing.",
       "Section 12 is intentionally left blank.",
@@ -1408,13 +1480,48 @@ function reveal(){
   else m.removeAttribute("popover");
   renderSlop(0);
 
-  const taps = ["Do not tap the glass.", "Calibrated by vibes. Accurate to ±100%.", "Slop is measured in SLU (Slop Load Units).",
-                "The meter cannot go down. It can only vent.", "Please stop shaking the slop.", "It's not a bug, it's a reading."];
-  let ti = 0;
+  const CRINGE = [
+    "You touched the slop meter. Why would you do that.",
+    "Again? It's not a button. Well, it is. It shouldn't be.",
+    "Three times. Someone screenshotted that.",
+    "You've now touched this more than you've touched grass this week.",
+    "The goo is visibly uncomfortable.",
+    "Imagine telling your therapist: ‘I kept poking a tube of goo on a portfolio.’",
+    "Your FBI agent just closed the laptop and went for a walk.",
+    "Eight. Your ancestors crossed oceans for this.",
+    "This is going on your permanent record. Yes, there's a record. It's this toast.",
+    "The slop meter has started a group chat about you.",
+    "Ten taps. TEN. Look at yourself.",
+    "There's now a fingerprint on your screen shaped like regret.",
+    "Okay, the goo is crying now. Happy?",
+    "Touch it one more time and it's telling your mum.",
+    "📱 Mum: why are you poking goo on the internet. call me."
+  ];
+  const AFTER = [
+    "Still poking. Still cringe.", "The goo has stopped feeling anything.", "Cringe level: ascended.",
+    "You're the reason the goo has trust issues.", "Even the cron job thinks this is weird.",
+    "Every tap is logged. By nobody. Which is somehow worse.", "Your browser is embarrassed to be seen with you.",
+    "The goo has asked for a transfer to a different portfolio.", "Bro is speedrunning cringe.", "Peak behaviour. Unfortunately."
+  ];
+  const FACES = ["😬", "🤨", "😐", "🫣", "😳", "🤢", "💀", "🙄", "😭", "🫠"];
+  let pokes = 0;
   const tap = () => {
+    pokes++;
     m.classList.remove("tapped"); void m.offsetWidth; m.classList.add("tapped");
-    toast(taps[ti++ % taps.length]);
-    slop(1, "tapped the glass");
+    toast(pokes <= CRINGE.length ? CRINGE[pokes - 1] : pick(AFTER), 4200);
+    const poke = $("#smPoke");
+    poke.textContent = `poked ${pokes}× 😬`;
+    poke.classList.add("on");
+    const face = document.createElement("span");
+    face.className = "reaction";
+    face.textContent = pick(FACES);
+    m.append(face);
+    setTimeout(() => face.remove(), 1100);
+    if (pokes % 5 === 0){
+      document.body.classList.remove("cringe"); void document.body.offsetWidth; document.body.classList.add("cringe");
+      setTimeout(() => document.body.classList.remove("cringe"), 500);
+    }
+    slop(1, pokes === 1 ? "touched the meter. weird." : `poked the goo ${pokes} times. seek help.`);
   };
   m.addEventListener("click", tap);
   m.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " "){ e.preventDefault(); tap(); } });
@@ -1464,6 +1571,220 @@ function reveal(){
       setTimeout(() => { s.remove(); live--; }, 800);
     }, { passive: true });
   }
+})();
+
+/* ============================================================
+   Slop ads, banger lines and free slop ideas
+   ============================================================ */
+const ADS = [
+  { em: "🔥", t: "HOT SINGLE PROMPTS IN YOUR AREA", b: "They're 0.3 miles away and desperate to be pasted into a chat window.", c: "Meet them", r: "They ghosted you. Prompts do that." },
+  { em: "💾", t: "DOWNLOAD MORE RAM", b: "100% free. 0% real. Your 212 open tabs deserve this.", c: "Download (2 TB)", r: "Downloading… 0%… 0%… it's a JPEG of a RAM stick." },
+  { em: "👨‍⚕️", t: "Doctors HATE this one weird prompt", b: "Local dev ships 40 repos a day with one simple trick: not reading any of them.", c: "Learn the trick", r: "The trick is: ‘make it better’. That's it. That's the whole trick." },
+  { em: "🎉", t: "YOU ARE THE 1,000,000th VISITOR!", b: "Claim your prize: a second LICENSE file, hand-delivered by a cron job.", c: "Claim prize", r: "Prize claimed. It's MIT. It's the same LICENSE." },
+  { em: "🪙", t: "SlopCoin™: backed by vibes", b: "Up 4000% since lunch. Down 4000% since lunch. Don't ask about dinner.", c: "Invest my rent", r: "Your rent is now 0.0003 SlopCoin. Congratulations, you're homeless and decentralised." },
+  { em: "🛋️", t: "Make $0/day from home!", b: "Prompt things nobody asked for from the comfort of your couch. No experience needed. No pay either.", c: "Start earning nothing", r: "Welcome aboard. Your first payment of $0.00 has been processed." },
+  { em: "⚠️", t: "Your PC has 14 viruses", b: "Relax. They were all vibe-coded. None of them actually work.", c: "Scan anyway", r: "Scan complete: 14 viruses found. All of them crashed on startup. You're safe." },
+  { em: "🙈", t: "Tired of reading code?", b: "Try Not Reading It™. Secretly used by thousands of senior engineers.", c: "Stop reading", r: "You're already a natural. You didn't read this either." },
+  { em: "💎", t: "Slop Premium", b: "Ad-free slop, now with more ads. Only $19.99/month, billed hourly.", c: "Subscribe", r: "Subscribed. Your first premium ad will arrive shortly. And then another." },
+  { em: "⏰", t: "NEW framework every 6 hours", b: "Learn it before it's deprecated. You have 5 hours and 58 minutes. Go.", c: "Panic", r: "Too late. It's deprecated. There's a newer one. It's also deprecated." },
+  { em: "🧠", t: "Outsource your entire personality", b: "Why have opinions when a model can have them for you? Now with 30% more confidence.", c: "Upload my soul", r: "Upload failed: soul exceeded size limit (it was mostly memes)." },
+  { em: "🍝", t: "Artisanal slop, delivered", b: "Small-batch, free-range, ethically prompted slop. Straight to your browser. Still warm.", c: "Order slop", r: "Your slop is on its way. It is already here. It was always here." }
+];
+
+const BANGERS = [
+  "It's not slop if you ship it with confidence.",
+  "Every great product started as slop. Most of them stayed that way.",
+  "I don't write code. I negotiate with it.",
+  "Works on my machine. My machine is someone else's GPU.",
+  "I don't have bugs. I have surprise features.",
+  "One more prompt and it's perfect. (400 prompts ago)",
+  "Slop today, legacy code tomorrow.",
+  "My tech stack is vibes and a Wi-Fi connection.",
+  "Hand-crafted? No. Hand-prompted.",
+  "If it compiles, it ships. If it doesn't, it's a feature branch.",
+  "Read the docs? Bro, I generated the docs.",
+  "Behind every repo is a LICENSE and a dream.",
+  "Commit messages: ‘fix’, ‘fix 2’, ‘please’, ‘PLEASE’.",
+  "Ship first. Understand never.",
+  "This code was reviewed by the same thing that wrote it.",
+  "Velocity: extremely high. Direction: unknown.",
+  "I'm not a 10x engineer. I'm a 10x prompter. It's different. It's worse.",
+  "Tech debt is just a loan from future me. He's broke.",
+  "My code has no comments because it has no explanation.",
+  "I put the ‘AI’ in ‘pAIn’.",
+  "Real devs test in production. Slop devs test in the portfolio.",
+  "Some people have side projects. I have side slop.",
+  "Don't hate the slop. Hate the prompt.",
+  "Started from the bottom, now we're at prompt 47.",
+  "The slop is not the problem. The slop is the solution to a problem nobody had."
+];
+
+const IDEA = {
+  thing: ["A dating app", "A to-do list", "A social network", "A ride-sharing app", "A food delivery app", "A meditation app", "A banking app",
+          "A weather app", "A fitness tracker", "A recipe site", "A browser extension", "A CRM", "A calendar", "A smart-fridge OS",
+          "A productivity dashboard", "A language-learning app", "A podcast", "An NFT marketplace", "A habit tracker", "A job board"],
+  who: ["for pigeons", "for your ex's houseplants", "for people who hate apps", "for sentient toasters", "for haunted houses",
+        "for villains between schemes", "for cats with LinkedIn accounts", "for medieval peasants", "for introverts who want to be left alone together",
+        "for your future self, who is disappointed", "for ghosts", "for people who only speak in emojis", "for the 4 people who read terms and conditions",
+        "for raccoons with a business plan", "for your group chat's worst member", "for retired supervillains", "for people who clap when the plane lands"],
+  twist: ["but every button is a captcha", "but it's on the blockchain", "but it only works at 3am", "but the AI is passive-aggressive",
+          "but it's secretly a horror game", "but it's narrated by a disappointed dad", "but everything is a subscription", "but it runs inside a spreadsheet",
+          "but it deletes itself if you're happy", "but it's powered by a cron job that hates you", "but the logo is spaghetti",
+          "but you have to win an argument with it first", "but it only accepts payment in compliments", "but it's 90% loading screen",
+          "but every notification is a threat", "but it rates you back"],
+  stack: ["Next.js and vibes", "one 4,000-line HTML file", "Rust (for the clout)", "three spreadsheets in a trench coat", "a Raspberry Pi in a drawer",
+          "Python and prayer", "no-code, no-brain", "Kubernetes (for a to-do list)", "localStorage and hope", "a cron job and a dream", "jQuery, unironically"],
+  pre: ["Slop", "Vibe", "Goo", "Prompt", "Mid", "Meh", "Glorp", "Yeet", "Bloop", "Cringe", "Snack", "Blorb", "Nonce", "Sludge", "Drip"],
+  suf: ["ly", "ify", "Hub", "r", ".io", "AI", "sy", "base", "verse", "stack", "Pal", "OS", "Bros", "flow", "zilla"],
+  users: ["0", "just you", "your mum (unwilling)", "4 bots and a pigeon", "one guy in Ohio", "3, all of them alt accounts", "a cron job", "negative 2"]
+};
+function idea(){
+  const thing = pick(IDEA.thing), who = pick(IDEA.who), twist = pick(IDEA.twist);
+  return {
+    name: pick(IDEA.pre) + pick(IDEA.suf),
+    line: `${thing} ${who}, ${twist}.`,
+    stack: pick(IDEA.stack),
+    potential: 60 + rand(41),
+    prompts: 1 + rand(9),
+    users: pick(IDEA.users),
+    prompt: null
+  };
+}
+function ideaPrompt(i){ return `Build me ${i.name}: ${i.line} Use ${i.stack}. Make it look expensive. Then make it better.`; }
+
+const DROP_COLOURS = ["var(--yellow)", "var(--cyan)", "var(--pink)", "var(--lime)", "var(--lav)", "var(--orange)"];
+
+function showAd(){
+  if (document.querySelector(".popad")) return;
+  const ad = pick(ADS);
+  let tries = 0;
+  const el = h("aside", { class: "popad", "aria-label": "Advertisement" });
+  const bye = () => { if (!el.isConnected || el.classList.contains("bye")) return; el.classList.add("bye"); setTimeout(() => el.remove(), 380); };
+  el.append(
+    h("div", { class: "bar-top" }, h("span", {}, "★ Sponsored slop ★"),
+      h("button", { class: "close", "aria-label": "Close ad", onclick: () => {
+        tries++;
+        if (tries === 1 && Math.random() < .7){
+          toast(pick(["Wait! 50% off closing this ad.", "Are you sure? This ad has a family.", "Closing ads is a premium feature. Kidding. Click again.", "This ad will remember that."]));
+          el.classList.remove("nudge"); void el.offsetWidth; el.classList.add("nudge");
+          return;
+        }
+        slop(-1, "closed an ad. coward");
+        bye();
+      } }, "×")),
+    h("div", { class: "in" },
+      h("span", { class: "em" }, ad.em),
+      h("h4", {}, ad.t),
+      h("p", {}, ad.b),
+      h("div", {}, h("button", { class: "btn small primary", onclick: () => { toast(ad.r); slop(1.5, "clicked an ad. on purpose."); bye(); } }, ad.c + " →"))));
+  document.body.append(el);
+  setTimeout(bye, 16000);
+}
+
+function dropLine(text, label){
+  const d = h("div", { class: "drop", role: "status",
+    style: `--c:${pick(DROP_COLOURS)};--rot:${(Math.random() * 6 - 3).toFixed(1)}deg;left:${6 + rand(54)}vw;top:${20 + rand(46)}vh` },
+    h("small", {}, label + " · tap to dismiss"), text);
+  const bye = () => { if (!d.isConnected || d.classList.contains("bye")) return; d.classList.add("bye"); setTimeout(() => d.remove(), 320); };
+  d.addEventListener("click", bye);
+  document.body.append(d);
+  setTimeout(bye, 7000);
+}
+
+(function slopDrops(){
+  let n = 0;
+  const fire = () => {
+    if (!gate.open && !document.hidden){
+      n++;
+      const r = Math.random();
+      if (n === 1 || r < .4) showAd();
+      else if (r < .75) dropLine(pick(BANGERS), "banger slop line");
+      else { const i = idea(); dropLine(`${i.name}: ${i.line}`, "free slop idea"); }
+    }
+    setTimeout(fire, 15000 + rand(12000));
+  };
+  setTimeout(fire, 9000);
+})();
+
+/* ---------- banner ads ---------- */
+(function bannerAds(){
+  const slots = [...document.querySelectorAll("[data-ad]")];
+  const order = shuffle(ADS.slice());
+  let k = 0;
+  const fill = slot => {
+    const ad = order[k++ % order.length];
+    slot.style.setProperty("--adc", pick(DROP_COLOURS));
+    slot.replaceChildren(
+      h("span", { class: "tag" }, "ADVERTISEMENT"),
+      h("span", { class: "em", "aria-hidden": "true" }, ad.em),
+      h("div", {}, h("h4", {}, h("span", { class: "flash" }, "NEW!"), ad.t), h("p", {}, ad.b)),
+      h("button", { class: "btn hot", onclick: () => { toast(ad.r); slop(1.5, "clicked a banner ad. who does that"); } }, ad.c + " →"));
+  };
+  slots.forEach(fill);
+  setInterval(() => { if (!document.hidden) slots.forEach(fill); }, 8000);
+})();
+
+/* ---------- slop lab ---------- */
+(function slopLab(){
+  const screen = $("#idea"), copyBtn = $("#ideaCopy");
+  let current = null, rolling = false;
+  const render = i => screen.replaceChildren(
+    h("span", { class: "nm" }, i.name),
+    h("span", { class: "line" }, i.line),
+    h("dl", { class: "meta" },
+      h("dt", {}, "Stack"), h("dd", {}, i.stack),
+      h("dt", {}, "Slop potential"), h("dd", {}, i.potential + "%"),
+      h("dt", {}, "Build time"), h("dd", {}, i.prompts === 1 ? "1 prompt" : i.prompts + " prompts"),
+      h("dt", {}, "Users"), h("dd", {}, i.users)));
+  const roll = () => {
+    if (rolling) return;
+    rolling = true;
+    screen.classList.add("rolling");
+    let f = 0;
+    const id = setInterval(() => {
+      render(idea());
+      if (++f >= 7){
+        clearInterval(id);
+        current = idea();
+        render(current);
+        screen.classList.remove("rolling");
+        rolling = false;
+        slop(2, "generated a slop idea");
+      }
+    }, 70);
+  };
+  $("#ideaGo").addEventListener("click", roll);
+  copyBtn.addEventListener("click", () => {
+    if (!current) return;
+    const text = ideaPrompt(current);
+    const ok = () => toast("Prompt copied. Go paste it into something. Ship it by lunch.");
+    const no = () => toast("Your clipboard said no. Even it has standards.");
+    try { navigator.clipboard.writeText(text).then(ok, no); } catch (e) { no(); }
+  });
+  current = idea();
+  render(current);
+
+  const quote = $("#bangerOut");
+  let last = -1;
+  const next = () => {
+    let i;
+    do { i = rand(BANGERS.length); } while (i === last && BANGERS.length > 1);
+    last = i;
+    quote.classList.remove("pop"); void quote.offsetWidth; quote.classList.add("pop");
+    quote.textContent = BANGERS[i];
+  };
+  $("#bangerGo").addEventListener("click", () => { next(); slop(1, "requested a banger"); });
+  next();
+
+  // hero banger rotates on its own
+  const hero = $("#banger");
+  let hi = rand(BANGERS.length);
+  hero.textContent = BANGERS[hi];
+  setInterval(() => {
+    if (document.hidden) return;
+    hero.classList.add("swap");
+    setTimeout(() => { hi = (hi + 1) % BANGERS.length; hero.textContent = BANGERS[hi]; hero.classList.remove("swap"); }, 320);
+  }, 6000);
 })();
 </script>
 </body>
