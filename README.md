@@ -33,6 +33,8 @@ Each run opens with the "I'm not a robot" checkbox, which fails you twice. After
 
 On trial 4 it adds an extra trial on purpose. The progress bar sometimes goes backwards. Once you're through you get the link and a receipt showing how long it took. Clearance lasts until you refresh.
 
+A **slop-o-meter** in the corner fills with goo as you scroll, hover, click and survive trials. It changes colour as you go up the levels (Slop-curious → Terminal slop). At 100% you get a SLOP OVERLOAD: it rains spaghetti, and then the meter vents back to 42%. Each card also has its own slop rating, and portslopio's is 110%.
+
 Every trial can be passed. Nothing gets stored or sent anywhere: no cookies, no analytics, no server.
 
 ## Editing
