@@ -24,7 +24,7 @@ New repositories with a working GitHub Pages deployment are added on each update
 
 **Slop-o-meter.** A gauge in the corner fills as you scroll, hover, click and complete trials, and changes colour across levels from Slop-curious to Terminal slop. At 100% it overloads, rains spaghetti and vents back to 42%. Tapping it triggers escalating plain-text roasts and a poke counter; there are no emoji reactions.
 
-**Ambient slop.** Pop-up ads, rotating banner ads, banger lines and free slop ideas appear while you browse. The Slop Lab has an idea generator with a "Copy as prompt" button and a banger line dispenser.
+**Ambient slop.** Pop-up ads, rotating banner ads, banger lines and free slop ideas appear while you browse. The Slop Lab has an idea generator with a "Copy as prompt" button and a random line generator.
 
 ## Editing
 
