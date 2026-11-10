@@ -8,8 +8,13 @@ A parody portfolio for the slop I've made. Every project gets a card with a blur
 | --- | --- | --- |
 | Filth Manor | https://filthyl.github.io/shelves/ | 7 |
 | Indian Hate Index | https://filthyl.github.io/hateindex/ | 8 |
+| MechWatch | https://filthyl.github.io/MechWatch/ | 7 |
+| Ashen Vow (HackeNSlash2D) | https://filthyl.github.io/HackeNSlash2D/ | 6 |
+| Parlour | https://filthyl.github.io/Parlour/ | 5 |
 | cards- | https://github.com/FilthyL/cards- (it's just a LICENSE) | 9 |
 | The next one | https://github.com/FilthyL?tab=repositories | 6 |
+
+Rule: every update adds any of my new repos that have a working GitHub Pages deployment. Repos with no live site (e.g. commsllm, karmannet) are skipped.
 
 ## The gauntlet
 

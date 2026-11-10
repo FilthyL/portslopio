@@ -588,6 +588,33 @@ const PROJECTS = [
     verdict: "You have been vetted more thoroughly than anything that cron job reads. Respect."
   },
   {
+    id: "mechwatch", name: "MechWatch", repo: "FilthyL/MechWatch",
+    url: "https://filthyl.github.io/MechWatch/", img: null, preview: "watch",
+    span: "", trials: 7, color: "var(--cyan)", slop: 81, slopNote: "500 years of ticking",
+    blurb: "I wanted to learn what a watch does. I now own a cinematic horology atlas with a letterboxed title card, a lens flare and a 3D watch that turns over when you scroll. It tells the time worse than the one on your phone and costs more in GPU.",
+    tags: ["Lens flare, on a watch", "A loader that winds a crown", "Chapters (plural)", "No strap, just vibes"],
+    caption: "power reserve: 42 h",
+    verdict: "It took you longer to get in here than it took the watch to be invented. Almost."
+  },
+  {
+    id: "ashen", name: "Ashen Vow", repo: "FilthyL/HackeNSlash2D",
+    url: "https://filthyl.github.io/HackeNSlash2D/", img: null, preview: "sword",
+    span: "", trials: 6, color: "var(--orange)", slop: 88, slopNote: "one chapter, many storms",
+    blurb: "A samurai game I prompted into existence, complete with lightning, a boss with a second phase, and synthesized thunder. The repo is called HackeNSlash2D. The game is called Ashen Vow. Nobody reconciled this.",
+    tags: ["Black-and-white storm", "Parry or perish", "Repo name != game name", "Sound is opt-in, unlike regret"],
+    caption: "Chapter I of an unknown number",
+    verdict: "You parried 13 captchas. Ren Takamori would be proud, and also confused."
+  },
+  {
+    id: "parlour", name: "Parlour", repo: "FilthyL/Parlour",
+    url: "https://filthyl.github.io/Parlour/", img: null, preview: "cards",
+    span: "", trials: 5, color: "var(--lime)", slop: 79, slopNote: "22 games, 0 friends",
+    blurb: "Twenty-two classic card games, in a browser, with a dealer who does cardistry before every deal. The name is a working title. It has been a working title for the whole project.",
+    tags: ["22 card games", "Show-off dealer", "Real chip sounds", "Working title"],
+    caption: "pass the device to a friend (optional)",
+    verdict: "You folded on 5 captchas and still won. The house always cheats."
+  },
+  {
     id: "cards", name: "cards-", repo: "FilthyL/cards-",
     url: "https://github.com/FilthyL/cards-", img: null, preview: "license",
     span: "", trials: 9, color: "var(--yellow)", slop: 100, slopNote: "pure concentrate",
@@ -785,6 +812,9 @@ function card(p){
       h("span", { class: "gh" }, "FilthyL/cards- · 1 file"),
       h("h4", {}, "LICENSE"),
       "Permission is hereby granted, free of charge, to any person obtaining a copy of this software (there is none) and associated documentation files (there are none), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of nothing at all...");
+  } else if (["watch", "sword", "cards"].includes(p.preview)){
+    preview = h("div", { class: "mirror", "aria-hidden": "true" },
+      h("div", { class: "m", style: "font-size:34px" }, p.name));
   } else if (p.preview === "mirror"){
     preview = h("div", { class: "mirror", "aria-hidden": "true" },
       h("div", { class: "m" }, h("div", { class: "m" }, h("div", { class: "m" }, "slop"))),
