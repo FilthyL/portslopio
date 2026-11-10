@@ -33,7 +33,7 @@ On trial 4 it adds an extra trial on purpose. The progress bar sometimes goes ba
 
 A **slop-o-meter** in the corner fills with goo as you scroll, hover, click and survive trials. It changes colour as you go up the levels (Slop-curious → Terminal slop). At 100% you get a SLOP OVERLOAD: it rains spaghetti, and then the meter vents back to 42%. Each card also has its own slop rating, and portslopio's is 110%.
 
-Poke the meter and it roasts you, harder each time ("You've now touched this more than you've touched grass this week"). On the 15th poke your mum texts.
+Poke the meter and it roasts you in plain text (no emoji reactions), harder each time ("You've now touched this more than you've touched grass this week"). On the 15th poke your mum texts.
 
 While you browse, things randomly drop in:
 - **Pop-up slop ads** in the corner, like "HOT SINGLE PROMPTS IN YOUR AREA", "DOWNLOAD MORE RAM" and SlopCoin™. The close button argues with you the first time.
