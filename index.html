@@ -376,7 +376,6 @@ dialog .toasts{position:absolute;top:auto;bottom:16px}
 
 /* ---------- banger, ads, drops, lab ---------- */
 .banger{display:block;width:fit-content;max-width:640px;margin:28px 0 0;background:var(--cream);color:var(--ink);border:var(--bd);border-radius:16px;padding:12px 16px;font:700 16px/1.35 var(--sans);box-shadow:4px 4px 0 var(--pink);transform:rotate(-1deg);transition:opacity .3s, transform .3s}
-.banger::before{content:"🔊 BANGER SLOP LINE";display:block;font:700 10px/1 var(--mono);letter-spacing:.12em;opacity:.55;margin-bottom:6px}
 .banger.swap{opacity:0;transform:rotate(-1deg) translateY(8px)}
 .adslot{--adc:var(--yellow);position:relative;margin:-60px 0 110px;border:var(--bd);border-radius:18px;overflow:hidden;box-shadow:6px 6px 0 var(--ink);color:var(--ink);min-height:118px;display:flex;align-items:center;gap:18px;padding:20px 24px;background-color:var(--adc);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.28) 0 14px,transparent 14px 28px);transition:background-color .5s;animation:adglow 2s ease-in-out infinite}
 @keyframes adglow{50%{box-shadow:6px 6px 0 var(--ink),0 0 0 6px rgba(255,255,255,.18)}}
@@ -1706,7 +1705,7 @@ function showAd(){
 function dropLine(text, label){
   const d = h("div", { class: "drop", role: "status",
     style: `--c:${pick(DROP_COLOURS)};--rot:${(Math.random() * 6 - 3).toFixed(1)}deg;left:${6 + rand(54)}vw;top:${20 + rand(46)}vh` },
-    h("small", {}, label + " · tap to dismiss"), text);
+    label ? h("small", {}, label + " · tap to dismiss") : null, text);
   const bye = () => { if (!d.isConnected || d.classList.contains("bye")) return; d.classList.add("bye"); setTimeout(() => d.remove(), 320); };
   d.addEventListener("click", bye);
   document.body.append(d);
@@ -1720,7 +1719,7 @@ function dropLine(text, label){
       n++;
       const r = Math.random();
       if (n === 1 || r < .4) showAd();
-      else if (r < .75) dropLine(pick(BANGERS), "banger slop line");
+      else if (r < .75) dropLine(pick(BANGERS), "");
       else { const i = idea(); dropLine(`${i.name}: ${i.line}`, "free slop idea"); }
     }
     setTimeout(fire, 15000 + rand(12000));
