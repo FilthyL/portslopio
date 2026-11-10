@@ -13,7 +13,6 @@ portslopio is a parody portfolio of the projects I have built. Each project is a
 | MechWatch | https://filthyl.github.io/MechWatch/ | 7 |
 | Ashen Vow (HackeNSlash2D) | https://filthyl.github.io/HackeNSlash2D/ | 6 |
 | Parlour | https://filthyl.github.io/Parlour/ | 5 |
-| cards- | https://github.com/FilthyL/cards- (a single LICENSE file) | 9 |
 | The next one | https://github.com/FilthyL?tab=repositories | 6 |
 
 New repositories with a working GitHub Pages deployment are added on each update. Repositories without a live site are skipped.

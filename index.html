@@ -162,9 +162,6 @@ section{margin-bottom:120px}
 .card.unlocked .direct{display:inline-flex!important}
 
 /* placeholder previews */
-.license{position:absolute;inset:0;background:var(--white);color:var(--ink);font:11px/1.55 var(--mono);padding:22px 26px;overflow:hidden}
-.license h4{margin:0 0 8px;font-size:13px}
-.license .gh{position:absolute;right:18px;top:16px;font-size:10px;opacity:.6}
 .mirror{position:absolute;inset:0;display:grid;place-items:center;background:var(--grape)}
 .mirror .m{width:72%;aspect-ratio:16/10;border:var(--bd);border-radius:12px;display:grid;place-items:center;font:400 24px/1 var(--display);background:var(--cream);color:var(--ink);position:relative;box-shadow:5px 5px 0 var(--pink)}
 .mirror .m .m{width:66%;font-size:15px;background:var(--yellow);box-shadow:4px 4px 0 var(--cyan)}
@@ -471,8 +468,7 @@ body.cringe nav, body.cringe header, body.cringe .wrap, body.cringe .tape{animat
 
 <div class="wrap">
   <div class="stats">
-    <div><b>3</b><span>projects shipped (one is a LICENSE)</span></div>
-    <div><b>1</b><span>repo that is only a LICENSE</span></div>
+    <div><b>5</b><span>projects shipped and live</span></div>
     <div><b>156</b><span>subreddits watched by a cron job</span></div>
     <div><b>3</b><span>knives held by rigged 3D hands</span></div>
   </div>
@@ -614,15 +610,6 @@ const PROJECTS = [
     verdict: "You folded on 5 captchas and still won. The house always cheats."
   },
   {
-    id: "cards", name: "cards-", repo: "FilthyL/cards-",
-    url: "https://github.com/FilthyL/cards-", img: null, preview: "license",
-    span: "", trials: 9, color: "var(--yellow)", slop: 100, slopNote: "pure concentrate",
-    blurb: "The leanest project in the collection. Zero bugs, zero tech debt, zero dependencies, zero code. One LICENSE file. Fully open source.",
-    tags: ["MIT-ish", "0 LOC", "Vaporware", "Visionary"],
-    caption: "the trailing dash is load-bearing",
-    verdict: "You passed the hardest gauntlet on this page to see a LICENSE file. Legendary behaviour."
-  },
-  {
     id: "next", name: "The next one", repo: "FilthyL/???",
     url: "https://github.com/FilthyL?tab=repositories", img: null, preview: "soon",
     span: "", trials: 6, color: "var(--lav)", slop: null, slopNote: "calculating",
@@ -637,8 +624,6 @@ const SKILLS = [
   ["Prompting", "100%", 100, ""],
   ["Typing ‘make it better’", "97%", 97, ""],
   ["Shipping on a Tuesday at 3am", "94%", 94, "pink"],
-  ["Naming repos (see: cards-)", "61%", 61, "warn"],
-  ["Writing LICENSE files", "100% · it's the main output", 100, ""],
   ["Reading the diff before merging", "12%", 12, "pink"],
   ["Centering a div", "delegated", 100, "warn"],
   ["Explaining slop at parties", "3 people have left", 38, "pink"]
@@ -647,9 +632,7 @@ const SKILLS = [
 const QUOTES = [
   ["It loads.", "— my mum, after 40 seconds", 4],
   ["I wanted a to-do app. Now I own a house with a basement full of knives.", "— a client, probably", 5],
-  ["This repository contains only a LICENSE.", "— GitHub, about cards-", 5],
   ["Ran hourly at :23. Never complained. Nobody asked how I was.", "— the cron job", 3],
-  ["I closed 14 pop-up ads to look at a LICENSE file. 10/10, would close again.", "— a visitor, again", 5],
   ["Why did I have to pick traffic lights to see a JSON file?", "— a visitor", 1]
 ];
 
@@ -806,11 +789,6 @@ function card(p){
   let preview;
   if (p.img){
     preview = h("img", { src: p.img, alt: `Screenshot of ${p.name}`, loading: "lazy" });
-  } else if (p.preview === "license"){
-    preview = h("div", { class: "license", "aria-hidden": "true" },
-      h("span", { class: "gh" }, "FilthyL/cards- · 1 file"),
-      h("h4", {}, "LICENSE"),
-      "Permission is hereby granted, free of charge, to any person obtaining a copy of this software (there is none) and associated documentation files (there are none), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of nothing at all...");
   } else if (["watch", "sword", "cards"].includes(p.preview)){
     preview = h("div", { class: "mirror", "aria-hidden": "true" },
       h("div", { class: "m", style: "font-size:34px" }, p.name));
@@ -1226,7 +1204,6 @@ const C = {
       "The Indian Hate Index measures hate; it does not endorse it. Please do not email it.",
       "Filth Manor's knives are not real knives. Please stop trying to hold them.",
       "The ads on this page are real ads, for nothing. Please do not click them. (Click them.)",
-      "cards- contains a LICENSE. That is the product. The product is complete.",
       "You waive your right to be annoyed by the captchas you are about to keep doing.",
       "Section 12 is intentionally left blank.",
       "You agree that Section 12 was not blank.",
@@ -1482,7 +1459,7 @@ function reveal(){
   document.getElementById("card-" + p.id)?.classList.add("unlocked");
   const pic = p.img
     ? h("img", { src: p.img, alt: `Screenshot of ${p.name}` })
-    : h("div", { class: "ph", style: "background:var(--grape);color:var(--cream);display:grid;place-items:center;font:400 40px/1 var(--display)" }, p.preview === "license" ? "📄 LICENSE" : p.preview === "mirror" ? "🪞" : "⏳");
+    : h("div", { class: "ph", style: "background:var(--grape);color:var(--cream);display:grid;place-items:center;font:400 40px/1 var(--display)" }, p.preview === "mirror" ? "🪞" : "⏳");
   const open = h("a", { class: "btn primary", href: p.url, target: p.self ? null : "_blank", rel: "noopener" }, p.self ? "Return to this exact page ↺" : `Open ${p.name} ↗`);
   if (p.self) open.addEventListener("click", e => { e.preventDefault(); closeGate(); window.scrollTo({ top: 0 }); toast("Welcome back to where you already were."); });
   stage.append(h("div", { class: "trial reveal" },
@@ -1601,7 +1578,6 @@ const ADS = [
   { em: "🔥", t: "HOT SINGLE PROMPTS IN YOUR AREA", b: "They're 0.3 miles away and desperate to be pasted into a chat window.", c: "Meet them", r: "They ghosted you. Prompts do that." },
   { em: "💾", t: "DOWNLOAD MORE RAM", b: "100% free. 0% real. Your 212 open tabs deserve this.", c: "Download (2 TB)", r: "Downloading… 0%… 0%… it's a JPEG of a RAM stick." },
   { em: "👨‍⚕️", t: "Doctors HATE this one weird prompt", b: "Local dev ships 40 repos a day with one simple trick: not reading any of them.", c: "Learn the trick", r: "The trick is: ‘make it better’. That's it. That's the whole trick." },
-  { em: "🎉", t: "YOU ARE THE 1,000,000th VISITOR!", b: "Claim your prize: a second LICENSE file, hand-delivered by a cron job.", c: "Claim prize", r: "Prize claimed. It's MIT. It's the same LICENSE." },
   { em: "🪙", t: "SlopCoin™: backed by vibes", b: "Up 4000% since lunch. Down 4000% since lunch. Don't ask about dinner.", c: "Invest my rent", r: "Your rent is now 0.0003 SlopCoin. Congratulations, you're homeless and decentralised." },
   { em: "🛋️", t: "Make $0/day from home!", b: "Prompt things nobody asked for from the comfort of your couch. No experience needed. No pay either.", c: "Start earning nothing", r: "Welcome aboard. Your first payment of $0.00 has been processed." },
   { em: "⚠️", t: "Your PC has 14 viruses", b: "Relax. They were all vibe-coded. None of them actually work.", c: "Scan anyway", r: "Scan complete: 14 viruses found. All of them crashed on startup. You're safe." },
@@ -1624,7 +1600,6 @@ const BANGERS = [
   "Hand-crafted? No. Hand-prompted.",
   "If it compiles, it ships. If it doesn't, it's a feature branch.",
   "Read the docs? Bro, I generated the docs.",
-  "Behind every repo is a LICENSE and a dream.",
   "Commit messages: ‘fix’, ‘fix 2’, ‘please’, ‘PLEASE’.",
   "Ship first. Understand never.",
   "This code was reviewed by the same thing that wrote it.",
