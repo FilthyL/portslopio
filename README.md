@@ -1,62 +1,39 @@
 # portslopio
 
-A parody portfolio for the slop I've made. Every project gets a card with a blurred preview, a write-up and a **Request access** button. Then you have to fight your way through **slopCAPTCHA™** before you get the link.
+Live site: https://filthyl.github.io/portslopio/
 
-## The slop
+portslopio is a parody portfolio of the projects I have built. Each project is a card with a blurred preview, a short write-up and a "Request access" button. To get the link you must first pass slopCAPTCHA, a gauntlet of deliberately absurd verification trials. It is a single static page with no build step, no cookies, no analytics and no server.
 
-| Project | Link | Trials |
+## Projects
+
+| Project | Live link | Trials |
 | --- | --- | --- |
 | Filth Manor | https://filthyl.github.io/shelves/ | 7 |
 | Indian Hate Index | https://filthyl.github.io/hateindex/ | 8 |
 | MechWatch | https://filthyl.github.io/MechWatch/ | 7 |
 | Ashen Vow (HackeNSlash2D) | https://filthyl.github.io/HackeNSlash2D/ | 6 |
 | Parlour | https://filthyl.github.io/Parlour/ | 5 |
-| cards- | https://github.com/FilthyL/cards- (it's just a LICENSE) | 9 |
+| cards- | https://github.com/FilthyL/cards- (a single LICENSE file) | 9 |
 | The next one | https://github.com/FilthyL?tab=repositories | 6 |
 
-Rule: every update adds any of my new repos that have a working GitHub Pages deployment. Repos with no live site (e.g. commsllm, karmannet) are skipped.
+New repositories with a working GitHub Pages deployment are added on each update. Repositories without a live site are skipped.
 
-## The gauntlet
+## How it works
 
-Each run opens with the "I'm not a robot" checkbox, which fails you twice. After that you always get one free-text wild question and one multiple-choice wild question, plus a random set of these:
+**slopCAPTCHA.** Each run starts with an "I'm not a robot" checkbox that fails twice, then always includes one free-text and one multiple-choice wild question plus a random mix of trials: a runaway button, a wrong image grid, hold-to-confirm that slips, a no-paste typing test, scroll-to-accept terms, a loading bar that falls back, a maths question with a wrong answer required, a creeping rating slider, a cookie banner, spot-the-real-button, a distorted text captcha and an accusatory "are you a robot" check. Every trial can be passed. Finishing shows the link and a receipt with the time taken. Clearance lasts until the page is refreshed.
 
-- a Continue button that runs away from you
-- an image grid that is wrong about everything ("select all squares with slop")
-- hold-to-confirm, which "slips" at 94%
-- typing a phrase with paste disabled
-- Terms of Slop you have to scroll to the bottom of
-- a vibe-check loading bar that reaches 99% and drops back to 37%, with a "go faster" button that slows it down
-- a maths question where you then have to enter the wrong answer
-- a rating slider that creeps back up to 10/10
-- a cookie banner where every toggle is load-bearing
-- spot the real Continue among decoys like `C0ntinue` and `Contiune`
-- "blink twice if you're being held here"
-- a distorted text captcha that rejects your first correct answer
-- "are you a robot?", where saying no gets you accused
+**Slop-o-meter.** A gauge in the corner fills as you scroll, hover, click and complete trials, and changes colour across levels from Slop-curious to Terminal slop. At 100% it overloads, rains spaghetti and vents back to 42%. Tapping it triggers escalating plain-text roasts and a poke counter; there are no emoji reactions.
 
-On trial 4 it adds an extra trial on purpose. The progress bar sometimes goes backwards. Once you're through you get the link and a receipt showing how long it took. Clearance lasts until you refresh.
-
-A **slop-o-meter** in the corner fills with goo as you scroll, hover, click and survive trials. It changes colour as you go up the levels (Slop-curious → Terminal slop). At 100% you get a SLOP OVERLOAD: it rains spaghetti, and then the meter vents back to 42%. Each card also has its own slop rating, and portslopio's is 110%.
-
-Poke the meter and it roasts you in plain text (no emoji reactions), harder each time ("You've now touched this more than you've touched grass this week"). On the 15th poke your mum texts.
-
-While you browse, things randomly drop in:
-- **Pop-up slop ads** in the corner, like "HOT SINGLE PROMPTS IN YOUR AREA", "DOWNLOAD MORE RAM" and SlopCoin™. The close button argues with you the first time.
-- **Banner ads** between sections that change every 8 seconds.
-- **Banger slop lines** and **free slop ideas** as speech bubbles. Tap one to dismiss it.
-
-The **Slop Lab** has a slop idea generator ("A CRM for people who only speak in emojis, but it's narrated by a disappointed dad") with a **Copy as prompt** button, so you can paste the idea straight into an AI. Next to it is a banger line dispenser. The hero also shows a new banger every 6 seconds.
-
-Every trial can be passed. Nothing gets stored or sent anywhere: no cookies, no analytics, no server.
+**Ambient slop.** Pop-up ads, rotating banner ads, banger lines and free slop ideas appear while you browse. The Slop Lab has an idea generator with a "Copy as prompt" button and a banger line dispenser.
 
 ## Editing
 
-It's all in `index.html`. Projects are in the `PROJECTS` array. The questions are in `FREE_Q` and `MC_Q`, the ads are in `ADS`, the lines are in `BANGERS`, the idea parts are in `IDEA`, and the meter roasts are in `CRINGE`. Screenshots go in `assets/shots/`. To run it locally:
+Everything lives in `index.html`. Projects are in the `PROJECTS` array; questions in `FREE_Q` and `MC_Q`; ads in `ADS`; lines in `BANGERS`; idea parts in `IDEA`; meter roasts in `CRINGE`. Screenshots go in `assets/shots/`. To run locally:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-## Deploying
+## Deployment
 
-`.github/workflows/pages.yml` deploys the repo root to GitHub Pages on every push to `main`. Turn it on under **Settings → Pages → Source: GitHub Actions**. The site will be at https://filthyl.github.io/portslopio/.
+`.github/workflows/pages.yml` deploys the repository root to GitHub Pages on every push to `main`. The Pages source must be set to GitHub Actions under Settings, Pages. The site is published at https://filthyl.github.io/portslopio/.
